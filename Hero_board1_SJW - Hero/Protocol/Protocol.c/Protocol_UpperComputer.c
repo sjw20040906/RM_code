@@ -1,29 +1,28 @@
 /**
  * @file Protocol_UpperComputer.c
  * @author Why
- * @brief ¸úÉÏÎ»»úÍ¨ĞÅµÄĞ­Òé
- * @frame Ö¡Í· 0x42 0x52  ¡ª¡ª ASCIIÊÇBR
- *  	  ¶ÔÓÚµ¯µÀÊı¾İ£¬µÚÈı¸ö×Ö½ÚÊÇÃüÁîÂë,0xCD£»
- *  	  µÚËÄ¸ö×Ö½ÚÊÇÊı¾İÖ¡µÄ³¤¶È£»
- *  	  Ö®ºóÊÇÊı¾İÖ¡£¬µ¯µÀÓĞ¹ØµÄÓĞÒ»¸ö×Ö½Ú
- *		  ÏÂÎ»»ú·¢¸øÉÏÎ»»úÊÇÉäËÙ£¬ÉÏÎ»»ú·¢¸øÏÂÎ»»úÊÇÔÆÌ¨100±¶µÄ¸©Ñö*»¡¶È*£»
- *	  	  Ö¡Î² Ò»×Ö½ÚµÄCRC8
+ * @brief è·Ÿä¸Šä½æœºé€šä¿¡çš„åè®®
+ * @frame å¸§å¤´ 0x42 0x52  â€”â€” ASCIIæ˜¯BR
+ *  	  å¯¹äºå¼¹é“æ•°æ®ï¼Œç¬¬ä¸‰ä¸ªå­—èŠ‚æ˜¯å‘½ä»¤ç ,0xCDï¼›
+ *  	  ç¬¬å››ä¸ªå­—èŠ‚æ˜¯æ•°æ®å¸§çš„é•¿åº¦ï¼›
+ *  	  ä¹‹åæ˜¯æ•°æ®å¸§ï¼Œå¼¹é“æœ‰å…³çš„æœ‰ä¸€ä¸ªå­—èŠ‚
+ *		  ä¸‹ä½æœºå‘ç»™ä¸Šä½æœºæ˜¯å°„é€Ÿï¼Œä¸Šä½æœºå‘ç»™ä¸‹ä½æœºæ˜¯äº‘å°100å€çš„ä¿¯ä»°*å¼§åº¦*ï¼›
+ *	  	  å¸§å°¾ ä¸€å­—èŠ‚çš„CRC8
  * @version 0.2
  * @date 2024-1-28
  *
  */
 #include "Protocol_UpperComputer.h"
 
-
 float Auto_Aim_Yaw;
 float Auto_Aim_Pitch;
 positionpid_t Auto_Aim_PID;
 
-// ²âÊÔdebugÏÔÊ¾ÓÃµÄ±äÁ¿
+// æµ‹è¯•debugæ˜¾ç¤ºç”¨çš„å˜é‡
 float a, b;
 
 /**
- * @brief  UpperComÏÂÎ»»úÓëÉÏÎ»»úÍ¨ĞÅ£¬ÏòÉÏÎ»»ú·¢ËÍĞÅÏ¢¡£Ê¹ÓÃusart*
+ * @brief  UpperComä¸‹ä½æœºä¸ä¸Šä½æœºé€šä¿¡ï¼Œå‘ä¸Šä½æœºå‘é€ä¿¡æ¯ã€‚ä½¿ç”¨usart*
  * @param  void
  * @retval void
  */
@@ -31,7 +30,7 @@ void UpperCom_Send_To_Up(uint8_t COM)
 {
 	uint8_t UpperCom_Send_Buffer[UpperCom_MAX_BUF];
 
-	/*»ñÈ¡µ¯ËÙ*/
+	/*è·å–å¼¹é€Ÿ*/
 	float bullet_velocity = 27.0f;
 	if (ControlMes.Speed_Bullet >= 5)
 		bullet_velocity = ControlMes.Speed_Bullet;
@@ -39,30 +38,30 @@ void UpperCom_Send_To_Up(uint8_t COM)
 	int16_t gimbal_yaw = ControlMes.yaw_realAngle;
 	static uint16_t mark = 0;
 
-	/* ÏÈÂ¼ÈëÖ¡Í· */
+	/* å…ˆå½•å…¥å¸§å¤´ */
 	UpperCom_Send_Buffer[0] = 0x42;
 	UpperCom_Send_Buffer[1] = 0x52;
 	UpperCom_Send_Buffer[2] = COM;
-	/* ÔÙ¸ù¾İÃüÁîÂë¼ÓÉÏÊı¾İÖ¡ºÍCRC8µÄĞ£Ñé */
+	/* å†æ ¹æ®å‘½ä»¤ç åŠ ä¸Šæ•°æ®å¸§å’ŒCRC8çš„æ ¡éªŒ */
 	if (COM == 0xCD)
 	{
 		if (mark++ >= 200)
 			mark = 0;
-		UpperCom_Send_Buffer[3] = 15; // Êı¾İ°ü°üº¬µÄ×Ö½ÚÊı
+		UpperCom_Send_Buffer[3] = 15; // æ•°æ®åŒ…åŒ…å«çš„å­—èŠ‚æ•°
 		memcpy(&UpperCom_Send_Buffer[4], &bullet_velocity, sizeof(bullet_velocity));
 		memcpy(&UpperCom_Send_Buffer[8], &bullet_angle, sizeof(bullet_angle));
 		memcpy(&UpperCom_Send_Buffer[12], &gimbal_yaw, sizeof(gimbal_yaw));
 		memcpy(&UpperCom_Send_Buffer[14], &mark, sizeof(mark));
 		memcpy(&UpperCom_Send_Buffer[16], &ControlMes.tnndcolor, sizeof(ControlMes.tnndcolor));
 		memcpy(&UpperCom_Send_Buffer[17], &ControlMes.z_rotation_velocity, sizeof(ControlMes.z_rotation_velocity));
-		Append_CRC8_Check_Sum(UpperCom_Send_Buffer, 5 + UpperCom_Send_Buffer[3]); // 5+x£¬x´ú±íÊı¾İ°ü°üº¬µÄÊı¾İ×Ö½ÚÊı¡£
+		Append_CRC8_Check_Sum(UpperCom_Send_Buffer, 5 + UpperCom_Send_Buffer[3]); // 5+xï¼Œxä»£è¡¨æ•°æ®åŒ…åŒ…å«çš„æ•°æ®å­—èŠ‚æ•°ã€‚
 	}
-	CDC_Transmit_FS(UpperCom_Send_Buffer, sizeof(UpperCom_Send_Buffer)); // usb·¢ËÍ
+	CDC_Transmit_FS(UpperCom_Send_Buffer, sizeof(UpperCom_Send_Buffer)); // usbå‘é€
 	memset(UpperCom_Send_Buffer, 0, UpperCom_MAX_BUF);
 }
 
 /**
- * @brief Ê®Áù½øÖÆ×ªfloat
+ * @brief åå…­è¿›åˆ¶è½¬float
  */
 static float R2float(uint8_t *p)
 {
@@ -72,7 +71,7 @@ static float R2float(uint8_t *p)
 }
 
 /**
- * @brief Ê®Áù½øÖÆ×ªint16_t
+ * @brief åå…­è¿›åˆ¶è½¬int16_t
  */
 static float R2int16(uint8_t *p)
 {
@@ -82,16 +81,16 @@ static float R2int16(uint8_t *p)
 }
 
 /**
- * @brief  UpperComÏÂÎ»»úÓëÉÏÎ»»úÍ¨ĞÅ£¬½ÓÊÜÉÏÎ»»úµÄĞÅÏ¢¡£Ê¹ÓÃusart*
- * @param  *Rec ½ÓÊÕµ½µÄÒ»Ö¡Êı¾İ
+ * @brief  UpperComä¸‹ä½æœºä¸ä¸Šä½æœºé€šä¿¡ï¼Œæ¥å—ä¸Šä½æœºçš„ä¿¡æ¯ã€‚ä½¿ç”¨usart*
+ * @param  *Rec æ¥æ”¶åˆ°çš„ä¸€å¸§æ•°æ®
  * @retval void
  */
 void UpperCom_Receive_From_Up(uint8_t Rec[])
 {
-	/* ÏÈ¼ìÑéÖ¡Í· */
+	/* å…ˆæ£€éªŒå¸§å¤´ */
 	if (Rec[0] != 0x42 || Rec[1] != 0x52)
 		return;
-	/* ÔÙ¸ù¾İÃüÁîÂëCRCĞ£Ñé */
+	/* å†æ ¹æ®å‘½ä»¤ç CRCæ ¡éªŒ */
 	switch (Rec[2])
 	{
 	case 0xFF:
@@ -102,7 +101,7 @@ void UpperCom_Receive_From_Up(uint8_t Rec[])
 	case 0xCD:
 		if (!Verify_CRC8_Check_Sum(Rec, 5 + Rec[3]))
 			return;
-		Auto_Aim_Pitch = Cloud_Pitch_level + R2float(&Rec[4]) * 1303.8f; //  8192 / 2 / ¦Ğ;
+		Auto_Aim_Pitch = Cloud_Pitch_level + R2float(&Rec[4]) * 1303.8f; //  8192 / 2 / Ï€;
 		// Auto_Aim_Yaw = Position_PID(&Auto_Aim_PID, 0, R4(&Rec[8]));
 		Auto_Aim_Yaw = R2int16(&Rec[8]);
 		a = R2float(&Rec[4]);

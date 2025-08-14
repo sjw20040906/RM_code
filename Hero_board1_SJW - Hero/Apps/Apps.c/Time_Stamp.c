@@ -14,9 +14,9 @@
 static uint32_t GetTimeStamp(RTC_TimeTypeDef *Time, RTC_DateTypeDef *Date);
 
 /**
- * @brief  Í¨¹ıRTC¼ÆËãµ±Ç°µÄÊ±¼ä´Á
+ * @brief  Í¨é€šè¿‡RTCè®¡ç®—å½“å‰çš„æ—¶é—´æˆ³
  * @param
- * @retval Ê±¼ä´ÁµÄ¼ÆËãÖµ
+ * @retval æ—¶é—´æˆ³çš„è®¡ç®—å€¼
  */
 uint32_t Append_Time_Stamp()
 {
@@ -32,9 +32,9 @@ uint32_t Append_Time_Stamp()
 }
 
 /**
- * @brief  Í¨¹ıRTC¼ÆËãµ±Ç°µÄÊ±¼ä´Á
- * @param  RTC½á¹¹Ìå
- * @retval msµÄ¼ÆÊıÖµ
+ * @brief  Í¨é€šè¿‡RTCè®¡ç®—å½“å‰çš„æ—¶é—´æˆ³
+ * @param  RTCç»“æ„ä½“
+ * @retval msçš„è®¡æ•°å€¼
  */
 uint32_t GetTimeStamp(RTC_TimeTypeDef *Time, RTC_DateTypeDef *Date)
 {

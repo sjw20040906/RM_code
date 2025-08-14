@@ -1,12 +1,11 @@
 #include "SBUS.h"
 
-
 SBUS_Buffer SBUS;
 uint8_t SBUS_RX_Finish = 0;
-uint8_t SBUS_RXBuffer[SBUS_RX_LEN] = {0}; // ���ջ���
+uint8_t SBUS_RXBuffer[SBUS_RX_LEN] = {0}; // 接收缓冲
 uint8_t SBUS_Rx_Data[25];
 /**
- * @brief  SBUS��ʼ�����������տ����ж�
+ * @brief  SBUS初始化，开启接收空闲中断
  * @param  void
  * @retval void
  */
@@ -16,7 +15,7 @@ void SBUS_Init()
 }
 
 /**
- * @brief  ���ң�����Ƿ�����
+ * @brief  检测遥控器是否在线
  * @param  void
  * @retval int
  */
@@ -30,7 +29,7 @@ int Control_Cheak()
 }
 
 /**
- * @brief  ����ң��������
+ * @brief  解析遥控器数据
  * @param  void
  * @retval void
  */
@@ -38,12 +37,12 @@ void SBUS_Handle()
 {
 	if (SBUS_RX_Finish == 1)
 	{
-		SBUS_RX_Finish = 0; // ׼����һ�ν���
+		SBUS_RX_Finish = 0; // 准备下一次接收
 
 		SBUS.Start = SBUS_RXBuffer[0];
-		SBUS.Ch1 = ((uint16_t)SBUS_RXBuffer[1]) | ((uint16_t)((SBUS_RXBuffer[2] & 0x07) << 8));															 // ǰ���ͺ���ͨ��
-		SBUS.Ch2 = ((uint16_t)((SBUS_RXBuffer[2] & 0xf8) >> 3)) | (((uint16_t)(SBUS_RXBuffer[3] & 0x3f)) << 6);											 // ��ƽ�ƺ���ƽ��ͨ��
-		SBUS.Ch3 = ((uint16_t)((SBUS_RXBuffer[3] & 0xc0) >> 6)) | ((((uint16_t)SBUS_RXBuffer[4]) << 2)) | (((uint16_t)(SBUS_RXBuffer[5] & 0x01)) << 10); // ��תͨ��
+		SBUS.Ch1 = ((uint16_t)SBUS_RXBuffer[1]) | ((uint16_t)((SBUS_RXBuffer[2] & 0x07) << 8));															 // 前进和后退通道
+		SBUS.Ch2 = ((uint16_t)((SBUS_RXBuffer[2] & 0xf8) >> 3)) | (((uint16_t)(SBUS_RXBuffer[3] & 0x3f)) << 6);											 // 左平移和右平移通道
+		SBUS.Ch3 = ((uint16_t)((SBUS_RXBuffer[3] & 0xc0) >> 6)) | ((((uint16_t)SBUS_RXBuffer[4]) << 2)) | (((uint16_t)(SBUS_RXBuffer[5] & 0x01)) << 10); // 自转通道
 		SBUS.Ch4 = ((uint16_t)((SBUS_RXBuffer[5] & 0xfe) >> 1)) | (((uint16_t)(SBUS_RXBuffer[6] & 0x0f)) << 7);
 		SBUS.Ch5 = ((uint16_t)((SBUS_RXBuffer[6] & 0xf0) >> 4)) | (((uint16_t)(SBUS_RXBuffer[7] & 0x7f)) << 4);
 		SBUS.Ch6 = ((uint16_t)((SBUS_RXBuffer[7] & 0x80) >> 7)) | (((uint16_t)SBUS_RXBuffer[8]) << 1) | (((uint16_t)(SBUS_RXBuffer[9] & 0x03)) << 9);
@@ -60,12 +59,12 @@ void SBUS_Handle()
 		SBUS.Flag = SBUS_RXBuffer[23];
 		SBUS.End = SBUS_RXBuffer[24];
 
-		//		//2006ȫ���ֵ����ٶȻ�ȡ
+		//		//2006全向轮底盘速度获取
 		//		Omni_Data.Speed_ToCloud.vx = (SBUS.Ch1-1024)*1.5;
 		//		Omni_Data.Speed_ToCloud.vy = (SBUS.Ch2-2048)*0.8;
 		//		Omni_Data.Speed_ToCloud.vw = (SBUS.Ch3-1024)/80;
 
-		// 3508�����ķ�ֵ����ٶȻ�ȡ
+		// 3508麦克纳姆轮底盘速度获取
 		if (SBUS.Ch7 == 0x0161 && SBUS.Ch8 == 0x0161)
 		{
 			//			Mecanum_Data.Speed_ToCloud.vx = (SBUS.Ch1-1024)*1.5;
@@ -76,10 +75,10 @@ void SBUS_Handle()
 			ControlMes.z_rotation_velocity = (SBUS.Ch3 - 1024) / 80;
 			ControlMes.yaw_velocity = 0;
 
-			// ��board1 CAN2���͸�board2��
+			// 用board1 CAN2发送给board2。
 			Board1_FUN.Board1_To_2();
 		}
 
-		HAL_UARTEx_ReceiveToIdle_DMA(&huart3, SBUS_Rx_Data, sizeof(SBUS_Rx_Data)); // ׼��������һ������
+		HAL_UARTEx_ReceiveToIdle_DMA(&huart3, SBUS_Rx_Data, sizeof(SBUS_Rx_Data)); // 准备接收下一包数据
 	}
 }

@@ -10,15 +10,15 @@
  */
 #include "DT7.h"
 
-// ����ң��ǰ��б��
+// 底盘遥控前后斜坡
 SpeedRamp_t ChassisRamp_ForwardBack = ForwardBackGroundInit;
 #undef ForwardBackGroundInit
 
-// ����ң������б��
+// 底盘遥控左右斜坡
 SpeedRamp_t ChassisRamp_LeftRight = LeftRightGroundInit;
 #undef LeftRightGroundInit
 
-// ����ң������תб��
+// 底盘遥控左右转斜坡
 SpeedRamp_t ChassisRamp_Rotate = RotateGroundInit;
 #undef RotateGroundInit
 
@@ -34,7 +34,7 @@ DR16_Export_Data_t DR16_Export_Data = DR16_ExportDataGroundInit;
 Image_Transmission_Export_Data_t Image_Transmission_Export_Data = Image_Transmission_ExportDataGroundInit;
 
 /**
- * @brief  DT7��ʼ�����������տ����ж�
+ * @brief  DT7初始化，开启接收空闲中断
  * @param  void
  * @retval void
  */
@@ -45,42 +45,42 @@ void DT7_Init(void)
 
 /**
  * @Data    2024/3/9
- * @brief   ���̱�־λ����
+ * @brief   键盘标志位更新
  * @param   void
  * @retval  void
  */
 void KeyMouseFlag_Update(void)
 {
-	uint32_t KeyMouse = (uint32_t)RC_CtrlData.key.key_code | RC_CtrlData.mouse.press_l << 16 | RC_CtrlData.mouse.press_r << 17; // �Ѽ������ı�־λ�ϲ���
+	uint32_t KeyMouse = (uint32_t)RC_CtrlData.key.key_code | RC_CtrlData.mouse.press_l << 16 | RC_CtrlData.mouse.press_r << 17; // 把键盘鼠标的标志位合并。
 
-	for (int Index = 0; Index < KEYMOUSE_AMOUNT; Index++) // ����ȫ����λ���������ǵ�״̬��
+	for (int Index = 0; Index < KEYMOUSE_AMOUNT; Index++) // 遍历全部键位，更新他们的状态。
 	{
-		if (KeyMouse & (1 << Index)) // �жϵ�indexλ�Ƿ�Ϊ1��
+		if (KeyMouse & (1 << Index)) // 判断第index位是否为1。
 		{
 			DR16_Export_Data.KeyMouse.PressTime[Index]++;
-			if (DR16_Export_Data.KeyMouse.PressTime[Index] > TIME_KeyMouse_Press) // ���㰴�µ�ʱ�䣬��Ϊ����
+			if (DR16_Export_Data.KeyMouse.PressTime[Index] > TIME_KeyMouse_Press) // 满足按下的时间，视为按下
 			{
-				DR16_Export_Data.KeyMouse.Press_Flag |= 1 << Index; // ���øü��ı�־λΪ1
+				DR16_Export_Data.KeyMouse.Press_Flag |= 1 << Index; // 设置该键的标志位为1
 			}
 
-			if (DR16_Export_Data.KeyMouse.PressTime[Index] > TIME_KeyMouse_LongPress) // �����ж�
+			if (DR16_Export_Data.KeyMouse.PressTime[Index] > TIME_KeyMouse_LongPress) // 长按判断
 			{
 
-				DR16_Export_Data.KeyMouse.Long_Press_Flag |= 1 << Index; // ���ó�����־λ
+				DR16_Export_Data.KeyMouse.Long_Press_Flag |= 1 << Index; // 设置长按标志位
 			}
 		}
 		else
 		{
-			if ((DR16_Export_Data.KeyMouse.PressTime[Index] > TIME_KeyMouse_Press) && (DR16_Export_Data.KeyMouse.PressTime[Index] < TIME_KeyMouse_LongPress)) // ʱ�䴦������֮�䣬Ϊ������
+			if ((DR16_Export_Data.KeyMouse.PressTime[Index] > TIME_KeyMouse_Press) && (DR16_Export_Data.KeyMouse.PressTime[Index] < TIME_KeyMouse_LongPress)) // 时间处于两者之间，为单击。
 			{
-				DR16_Export_Data.KeyMouse.Click_Press_Flag |= 1 << Index; // ���õ�����־λ
+				DR16_Export_Data.KeyMouse.Click_Press_Flag |= 1 << Index; // 设置单击标志位
 			}
 			else
 			{
-				DR16_Export_Data.KeyMouse.Click_Press_Flag &= ~(1 << Index); // ȡ�����������ü��ı�־λ��Ϊ0
+				DR16_Export_Data.KeyMouse.Click_Press_Flag &= ~(1 << Index); // 取反操作，将该键的标志位设为0
 			}
 
-			// �Ѿ��ɿ��������±�־λ�ÿա�
+			// 已经松开，将按下标志位置空。
 			DR16_Export_Data.KeyMouse.Press_Flag &= ~(1 << Index);
 			DR16_Export_Data.KeyMouse.Long_Press_Flag &= ~(1 << Index);
 			DR16_Export_Data.KeyMouse.PressTime[Index] = 0;
@@ -89,13 +89,13 @@ void KeyMouseFlag_Update(void)
 }
 
 /**
- * @brief  DT7���ݽ���
+ * @brief  DT7数据解析
  * @param  void
  * @retval void
  */
 void DT7_Handle(void)
 {
-	/*DT7���ݴ���*/
+	/*DT7数据处理*/
 	if (DT7_RX_Finish == 1)
 	{
 		DT7_RX_Finish = 0;
@@ -146,17 +146,17 @@ void DT7_Handle(void)
 		}
 
 		/**************************** control code ****************************/
-		/*ͨ��1*/
-		/*������ң�أ������飻�ϼ���*/
+		/*通道1*/
+		/*中正常遥控；下自瞄；上键鼠*/
 		if (RC_CtrlData.rc.s1 == RC_SW_MID && RC_CtrlData.rc.s2 != 0)
 		{
-			/******************************ң������ֵ����******************************/
-			// �����˶�����
-			ControlMes.x_velocity = -RC_CtrlData.rc.ch3; // ��������
-			ControlMes.y_velocity = -RC_CtrlData.rc.ch2; // ��������
+			/******************************遥控器数值传递******************************/
+			// 底盘运动控制
+			ControlMes.x_velocity = -RC_CtrlData.rc.ch3; // 左手上下
+			ControlMes.y_velocity = -RC_CtrlData.rc.ch2; // 左手左右
 
 			static int countFric = 0;
-			// ����״̬���ã�UP ���� �� MID ��ֹ���䣻DOWN ��¼�� //��¼ģʽ��ֹͣС���ݣ���Yaw���������Ծ�ֹ����¼У׼�����ã�
+			// 发射状态设置（UP 发射 ； MID 禁止发射；DOWN 检录） //检录模式是停止小陀螺，让Yaw轴与底盘相对静止（检录校准测速用）
 			if (RC_CtrlData.rc.s2 == RC_SW_DOWN)
 			{
 				ControlMes.modelFlag = model_Record;
@@ -185,30 +185,30 @@ void DT7_Handle(void)
 				}
 			}
 
-			// ��̨�˶�����
+			// 云台运动控制
 			ControlMes.AutoAimFlag = 0;
-			ControlMes.pitch_velocity = RC_CtrlData.rc.ch1;			// ��������
-			ControlMes.yaw_velocity = RC_CtrlData.rc.ch0;			// ��������
-			ControlMes.z_rotation_velocity = RC_CtrlData.wheel * 2; // ��������
+			ControlMes.pitch_velocity = RC_CtrlData.rc.ch1;			// 右手上下
+			ControlMes.yaw_velocity = RC_CtrlData.rc.ch0;			// 右手左右
+			ControlMes.z_rotation_velocity = RC_CtrlData.wheel * 2; // 滑轮左右
 			ControlMes.yaw_position = Auto_Aim_Yaw;
 		}
 
-		// ����ģʽ
+		// 自瞄模式
 		else if (RC_CtrlData.rc.s1 == RC_SW_DOWN && RC_CtrlData.rc.s2 != 0)
 		{
-			/******************************ң������ֵ����******************************/
-			// �����˶�����
-			ControlMes.x_velocity = -RC_CtrlData.rc.ch3; // ��������
-			ControlMes.y_velocity = -RC_CtrlData.rc.ch2; // ��������
+			/******************************遥控器数值传递******************************/
+			// 底盘运动控制
+			ControlMes.x_velocity = -RC_CtrlData.rc.ch3; // 左手上下
+			ControlMes.y_velocity = -RC_CtrlData.rc.ch2; // 左手左右
 
-			// ����״̬���ã�UP ����ģʽ �� MID ��ֹ���䣻DOWN ����ģʽ��
+			// 发射状态设置（UP 连发模式 ； MID 禁止发射；DOWN 单发模式）
 			ControlMes.shoot_state = RC_CtrlData.rc.s2;
 
-			// ������̨�˶����ƣ��������Ӷ����ң����������Ϊ�˲������龫�ȣ��Լ���ң����΢��һ�¸�����׼��
-			ControlMes.pitch_velocity = RC_CtrlData.rc.ch1 * 0.2; // ��������
-			ControlMes.yaw_velocity = RC_CtrlData.rc.ch0;		  // ��������
+			// 自瞄云台运动控制（这里添加额外的遥控器控制是为了补偿自瞄精度，自己用遥控器微调一下辅助瞄准）
+			ControlMes.pitch_velocity = RC_CtrlData.rc.ch1 * 0.2; // 右手上下
+			ControlMes.yaw_velocity = RC_CtrlData.rc.ch0;		  // 右手左右
 			ControlMes.AutoAimFlag = 1;
-			// ��λ���Ӿ��õ�������������������һ���ģ�ͨ�����ߵ�������Ҫ�Ժ�
+			// 上位机视觉得到的正负与电机的正负是一样的，通信两边的正负号要对好
 			ControlMes.yaw_position = Auto_Aim_Yaw;
 			Cloud.AutoAim_Pitch = Auto_Aim_Pitch;
 			if (ControlMes.shoot_state == RC_SW_DOWN)
@@ -228,25 +228,24 @@ void DT7_Handle(void)
 				ControlMes.fric_Flag = 0;
 			}
 		}
-
 		else if (RC_CtrlData.rc.s1 == RC_SW_UP && RC_CtrlData.rc.s2 == RC_SW_MID)
 		{
-			/*�������ݴ���*/
+			/*键鼠数据处理*/
 			KeyMouseFlag_Update();
 			RemoteControl_PC_Update();
 		}
 		else
 		{
 			ControlMes.AutoAimFlag = 0;
-			ControlMes.x_velocity = 0;			// ��������
-			ControlMes.y_velocity = 0;			// ��������
-			ControlMes.z_rotation_velocity = 0; // ��������
+			ControlMes.x_velocity = 0;			// 左手上下
+			ControlMes.y_velocity = 0;			// 左手左右
+			ControlMes.z_rotation_velocity = 0; // 右手上下
 			ControlMes.yaw_velocity = 0;
 			ControlMes.pitch_velocity = 0;
 			ControlMes.shoot_state = RC_SW_MID;
 		}
 
-		/*������Ϣ����*/
+		/*发射信息处理*/
 		if (ControlMes.shoot_state == RC_SW_UP)
 		{
 			Dial_Data.Shoot_Mode = Continuous_Shoot;
@@ -257,27 +256,27 @@ void DT7_Handle(void)
 			Shoot_Data.Shoot_Switch = 0;
 		}
 	}
-	// ��board1 CAN2���͸�board2��
+	// 用board1 CAN2发送给board2。
 	Board1_FUN.Board1_To_2();
 }
 
 /**
- * @brief  ��ȡ������ĳ������ǰ�Ķ���
- * @param	��ֵ  ����
- * @retval ���ؼ�����״̬  0 û�иö��� 1 �иö���
+ * @brief  获取鼠标键盘某个键当前的动作
+ * @param	键值  动作
+ * @retval 返回键鼠动作状态  0 没有该动作 1 有该动作
  */
 bool GetKeyMouseAction(KeyList_e KeyMouse, KeyAction_e Action)
 {
 	uint8_t action = 0;
 	switch (Action)
 	{
-	case KeyAction_CLICK: // ����
+	case KeyAction_CLICK: // 单击
 		action = ((DR16_Export_Data.KeyMouse.Click_Press_Flag >> KeyMouse) & 1);
 		break;
-	case KeyAction_PRESS: // ����
+	case KeyAction_PRESS: // 按下
 		action = ((DR16_Export_Data.KeyMouse.Press_Flag >> KeyMouse) & 1);
 		break;
-	case KeyAction_LONG_PRESS: // ����
+	case KeyAction_LONG_PRESS: // 长按
 		action = ((DR16_Export_Data.KeyMouse.Long_Press_Flag >> KeyMouse) & 1);
 		break;
 	default:
@@ -292,14 +291,14 @@ bool IT_GetKeyMouseAction(KeyList_e KeyMouse, KeyAction_e Action)
 	uint8_t action = 0;
 	switch (Action)
 	{
-	case KeyAction_CLICK: // ����
+	case KeyAction_CLICK: // 单击
 
 		action = ((Image_Transmission_Export_Data.KeyMouse.Click_Press_Flag >> KeyMouse) & 1);
 		break;
-	case KeyAction_PRESS: // ����
+	case KeyAction_PRESS: // 按下
 		action = ((Image_Transmission_Export_Data.KeyMouse.Press_Flag >> KeyMouse) & 1);
 		break;
-	case KeyAction_LONG_PRESS: // ����
+	case KeyAction_LONG_PRESS: // 长按
 		action = ((Image_Transmission_Export_Data.KeyMouse.Long_Press_Flag >> KeyMouse) & 1);
 		break;
 	default:
@@ -309,9 +308,9 @@ bool IT_GetKeyMouseAction(KeyList_e KeyMouse, KeyAction_e Action)
 	return action;
 }
 
-static int RampRate_ForwardBack = 80; // б�º�������ֵ
-static int RampRate_LeftRight = 80;	  // б�º�������ֵ
-// static float RampRate_Rotate = 0.2;              //б�º�������ֵ
+static int RampRate_ForwardBack = 80; // 斜坡函数叠加值
+static int RampRate_LeftRight = 80;	  // 斜坡函数叠加值
+// static float RampRate_Rotate = 0.2;              //斜坡函数叠加值
 
 static int Q_Lock = 0;
 static int E_Lock = 0;
@@ -321,13 +320,13 @@ static int add_Q = 0;
 static int add_E = 0;
 
 /**
- * @brief  ���Ƹ���
+ * @brief  控制更新
  * @param	none
- * @retval �޸Ŀ���
+ * @retval 修改控制
  */
 void RemoteControl_PC_Update(void)
 {
-	/*���*/
+	/*清空*/
 	if (ControlMes.game_start == 1)
 	{
 		if (GetKeyMouseAction(KEY_R, KeyAction_PRESS) || ControlMes.Blood_Volume == 0) // r
@@ -353,7 +352,7 @@ void RemoteControl_PC_Update(void)
 		}
 	}
 
-	/*ǰ���˶�����*/
+	/*前后运动控制*/
 	if (GetKeyMouseAction(KEY_W, KeyAction_PRESS)) // w
 	{
 		ChassisRamp_ForwardBack.rate = RampRate_ForwardBack;
@@ -369,7 +368,7 @@ void RemoteControl_PC_Update(void)
 	}
 	ControlMes.x_velocity = -SpeedRampCalc(&ChassisRamp_ForwardBack);
 
-	/*�����˶�����*/
+	/*左右运动控制*/
 	if (GetKeyMouseAction(KEY_A, KeyAction_PRESS)) // a
 	{
 		ChassisRamp_LeftRight.rate = -RampRate_LeftRight;
@@ -385,7 +384,7 @@ void RemoteControl_PC_Update(void)
 	}
 	ControlMes.y_velocity = -SpeedRampCalc(&ChassisRamp_LeftRight);
 
-	/*С���ݿ���*/												  /*QE*/
+	/*小陀螺控制*/												  /*QE*/
 	if (GetKeyMouseAction(KEY_Q, KeyAction_PRESS) && Q_Lock == 0) // q
 	{
 		Q_Lock = 1;
@@ -424,13 +423,13 @@ void RemoteControl_PC_Update(void)
 		}
 	}
 
-	/*�Ҽ�����*/
+	/*右键自瞄*/
 	if (GetKeyMouseAction(MOUSE_Right, KeyAction_CLICK))
 	{
 		if (ControlMes.AutoAimFlag == 0)
 		{
 			ControlMes.AutoAimFlag = 1;
-			// ��λ���Ӿ��õ�������������������һ���ģ�ͨ�����ߵ�������Ҫ�Ժ�
+			// 上位机视觉得到的正负与电机的正负是一样的，通信两边的正负号要对好
 			ControlMes.yaw_position = Auto_Aim_Yaw;
 			Cloud.AutoAim_Pitch = Auto_Aim_Pitch;
 		}
@@ -446,7 +445,7 @@ void RemoteControl_PC_Update(void)
 		Cloud.AutoAim_Pitch = Auto_Aim_Pitch;
 	}
 
-	/*�������������*/
+	/*鼠标左键发射控制*/
 	if ((GetKeyMouseAction(MOUSE_Left, KeyAction_PRESS) || GetKeyMouseAction(MOUSE_Left, KeyAction_LONG_PRESS)) && ControlMes.fric_Flag == 1)
 	{
 		ControlMes.shoot_state = RC_SW_UP;
@@ -456,7 +455,7 @@ void RemoteControl_PC_Update(void)
 		ControlMes.shoot_state = RC_SW_MID;
 	}
 
-	/*�˶���λ����*/ /*CVB*/
+	/*运动档位控制*/ /*CVB*/
 	if (GetKeyMouseAction(KEY_C, KeyAction_PRESS))
 	{
 		ChassisRamp_ForwardBack.maxcount = 600;
@@ -487,11 +486,11 @@ void RemoteControl_PC_Update(void)
 		ChassisRamp_Rotate.mincount = -1600;
 	}
 
-	/*���䵵λ����*/
-	/*2��/s*/
+	/*发射档位控制*/
+	/*2发/s*/
 	if (GetKeyMouseAction(KEY_Z, KeyAction_CLICK))
 	{
-		// ���� 2��/s -540
+		// 至少 2发/s -540
 		if (Dial_Data.Speed_Dial < -550)
 		{
 			Dial_Data.Speed_Dial += 540;
@@ -501,7 +500,7 @@ void RemoteControl_PC_Update(void)
 
 	if (GetKeyMouseAction(KEY_X, KeyAction_CLICK))
 	{
-		// ���� 12��/s -3240
+		// 至多 12发/s -3240
 		if (Dial_Data.Speed_Dial > -3000)
 		{
 			Dial_Data.Speed_Dial -= 540;
@@ -509,7 +508,7 @@ void RemoteControl_PC_Update(void)
 		}
 	}
 
-	// ��̨����
+	// 云台控制
 	ControlMes.yaw_velocity = RC_CtrlData.mouse.x * 5;
 	ControlMes.pitch_velocity = RC_CtrlData.mouse.y * 8;
 

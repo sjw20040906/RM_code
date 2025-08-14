@@ -19,60 +19,60 @@
 #include "FuzzyPID.h"
 #include "math.h"
 
-/**********PID¶ÔÍâÊı¾İ½Ó¿Ú************/
+/**********PIDå¯¹å¤–æ•°æ®æ¥å£************/
 
-// ÔöÁ¿Ê½PID¼ÆËãµÄ»ù×¼²ÎÊı
+// å¢é‡å¼PIDè®¡ç®—çš„åŸºå‡†å‚æ•°
 typedef struct incrementalpid_t
 {
-    float Target;         // Éè¶¨Ä¿±êÖµ
-    float Measured;       // ²âÁ¿Öµ
-    float err;            // ±¾´ÎÆ«²îÖµ
-    float err_last;       // ÉÏÒ»´ÎÆ«²î
-    float err_beforeLast; // ÉÏÉÏ´ÎÆ«²î
-    float last_set_point; // ÉÏÒ»´ÎÄ¿±êÖµ
-    float error_target;   // Ç°À¡¿ØÖÆ
-    float integral_error; // Îó²î»ı·ÖÀÛ»ı
+    float Target;         // è®¾å®šç›®æ ‡å€¼
+    float Measured;       // æµ‹é‡å€¼
+    float err;            // æœ¬æ¬¡åå·®å€¼
+    float err_last;       // ä¸Šä¸€æ¬¡åå·®
+    float err_beforeLast; // ä¸Šä¸Šæ¬¡åå·®
+    float last_set_point; // ä¸Šä¸€æ¬¡ç›®æ ‡å€¼
+    float error_target;   // å‰é¦ˆæ§åˆ¶
+    float integral_error; // è¯¯å·®ç§¯åˆ†ç´¯ç§¯
     float Kp;
     float Ki;
     float Kd;
-    float kf; // Kp, Ki, Kd£¬Kf¿ØÖÆÏµÊı
+    float kf; // Kp, Ki, Kdï¼ŒKfæ§åˆ¶ç³»æ•°
     float p_out;
     float i_out;
-    float d_out;            // ¸÷²¿·ÖÊä³öÖµ
-    float f_out;            // Ç°À¡fÊä³ö
-    float pwm;              // pwmÊä³ö
-    uint32_t MaxOutput;     // Êä³öÏŞ·ù
-    uint32_t IntegralLimit; // »ı·ÖÏŞ·ù
+    float d_out;            // å„éƒ¨åˆ†è¾“å‡ºå€¼
+    float f_out;            // å‰é¦ˆfè¾“å‡º
+    float pwm;              // pwmè¾“å‡º
+    uint32_t MaxOutput;     // è¾“å‡ºé™å¹…
+    uint32_t IntegralLimit; // ç§¯åˆ†é™å¹…
     float (*Incremental_PID)(struct incrementalpid_t *pid_t, float target, float measured);
 } incrementalpid_t;
 
-// Î»ÖÃÊ½PID¼ÆËãµÄ»ù×¼²ÎÊı
+// ä½ç½®å¼PIDè®¡ç®—çš„åŸºå‡†å‚æ•°
 typedef struct positionpid_t
 {
-    float Target;         // Éè¶¨Ä¿±êÖµ
-    float Measured;       // ²âÁ¿Öµ
-    float err;            // ±¾´ÎÆ«²îÖµ
-    float err_last;       // ÉÏÒ»´ÎÆ«²î
-    float err_change;     // Îó²î±ä»¯ÂÊ
-    float last_set_point; // ÉÏÒ»´ÎÄ¿±êÖµ
-    float error_target;   // Ç°À¡¿ØÖÆ
-    float integral_error; // Îó²î»ı·ÖÀÛ»ı
+    float Target;         // è®¾å®šç›®æ ‡å€¼
+    float Measured;       // æµ‹é‡å€¼
+    float err;            // æœ¬æ¬¡åå·®å€¼
+    float err_last;       // ä¸Šä¸€æ¬¡åå·®
+    float err_change;     // è¯¯å·®å˜åŒ–ç‡
+    float last_set_point; // ä¸Šä¸€æ¬¡ç›®æ ‡å€¼
+    float error_target;   // å‰é¦ˆæ§åˆ¶
+    float integral_error; // è¯¯å·®ç§¯åˆ†ç´¯ç§¯
     float Kp;
     float Ki;
-    float Kd; // Kp, Ki, Kd¿ØÖÆÏµÊı
+    float Kd; // Kp, Ki, Kdæ§åˆ¶ç³»æ•°
     float kf;
     float p_out;
     float i_out;
-    float d_out;               // ¸÷²¿·ÖÊä³öÖµ
-    float f_out;               // Ç°À¡fÊä³ö
-    float pwm;                 // pwmÊä³ö
-    float MaxOutput;           // Êä³öÏŞ·ù
-    float Integral_Separation; // »ı·Ö·ÖÀëãĞÖµ
-    float IntegralLimit;       // »ı·ÖÏŞ·ù
+    float d_out;               // å„éƒ¨åˆ†è¾“å‡ºå€¼
+    float f_out;               // å‰é¦ˆfè¾“å‡º
+    float pwm;                 // pwmè¾“å‡º
+    float MaxOutput;           // è¾“å‡ºé™å¹…
+    float Integral_Separation; // ç§¯åˆ†åˆ†ç¦»é˜ˆå€¼
+    float IntegralLimit;       // ç§¯åˆ†é™å¹…
     float (*Position_PID)(struct positionpid_t *pid_t, float target, float measured);
 } positionpid_t;
 
-// Ä£ºıPID¼ÆËãµÄ»ù×¼²ÎÊı
+// æ¨¡ç³ŠPIDè®¡ç®—çš„åŸºå‡†å‚æ•°
 typedef struct Struct_PID_Manage_Object_Fuzzy
 {
     float kp;
@@ -83,24 +83,24 @@ typedef struct Struct_PID_Manage_Object_Fuzzy
     float error;
     float last_error;
     float before_last_error;
-    float integral_error; // Îó²î»ı·ÖÀÛ»ı
-    float error_target;   // Ç°À¡¿ØÖÆ
-    float err_change;     // Îó²î±ä»¯ÂÊ
+    float integral_error; // è¯¯å·®ç§¯åˆ†ç´¯ç§¯
+    float error_target;   // å‰é¦ˆæ§åˆ¶
+    float err_change;     // è¯¯å·®å˜åŒ–ç‡
 
-    float set_point;      // Ä¿±êÖµ
-    float now_point;      // µ±Ç°Öµ
-    float last_set_point; // ÉÏÒ»´ÎÄ¿±êÖµ
+    float set_point;      // ç›®æ ‡å€¼
+    float now_point;      // å½“å‰å€¼
+    float last_set_point; // ä¸Šä¸€æ¬¡ç›®æ ‡å€¼
 
-    float integral_limit;      // »ı·ÖÏŞ·ù
-    float output_limit;        // Êä³öÏŞ·ù
-    float Integral_Separation; // »ı·Ö·ÖÀëãĞÖµ
-    float deadzone;            // ËÀÇø
+    float integral_limit;      // ç§¯åˆ†é™å¹…
+    float output_limit;        // è¾“å‡ºé™å¹…
+    float Integral_Separation; // ç§¯åˆ†åˆ†ç¦»é˜ˆå€¼
+    float deadzone;            // æ­»åŒº
 
-    float p_out;  // pÊä³ö
-    float i_out;  // iÊä³ö
-    float d_out;  // dÊä³ö
-    float f_out;  // Ç°À¡fÊä³ö
-    float output; // ×ÜÊä³ö
+    float p_out;  // pè¾“å‡º
+    float i_out;  // iè¾“å‡º
+    float d_out;  // dè¾“å‡º
+    float f_out;  // å‰é¦ˆfè¾“å‡º
+    float output; // æ€»è¾“å‡º
 } Struct_PID_Manage_Object_Fuzzy;
 
 extern Struct_PID_Manage_Object_Fuzzy M3508s_DialPID;
@@ -112,7 +112,6 @@ extern float Position_PID(positionpid_t *pid_t, float target, float measured);
 extern float ClassisTwister_PID(positionpid_t *pid_t, float target, float measured);
 extern void Incremental_PIDInit(incrementalpid_t *pid_t, float Kp, float Kd, float Ki, uint32_t MaxOutput, uint32_t IntegralLimit);
 extern void Position_PIDInit(positionpid_t *pid_t, float Kp, float Kd, float Ki, float Kf, float MaxOutput, float IntegralLimit, float Integral_Separation);
-
 extern float Position_PID_Pitch(positionpid_t *pid_t, FUZZYPID_Data_t *fuzzy_t, float target, float measured);
 
 extern One_Kalman_t Cloud_YAWODKalman;

@@ -19,8 +19,8 @@
 
 typedef struct
 {
-	float count; // µ±Ç°µÄ×ÜËÙ¶ÈÖµ
-	float rate;	 // Ã¿Ò»´Îµş¼ÓµÄËÙ¶ÈÖµ
+	float count; // å½“å‰çš„æ€»é€Ÿåº¦å€¼
+	float rate;	 // æ¯ä¸€æ¬¡å åŠ çš„é€Ÿåº¦å€¼
 	int16_t mincount;
 	int16_t maxcount;
 } SpeedRamp_t;

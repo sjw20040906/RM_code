@@ -10,8 +10,7 @@
  */
 #include "CRC.h"
 
-
-/*--------------------------------����ϵͳʹ�õ�CRC begin---------------------------*/
+/*--------------------------------裁判系统使用的CRC begin---------------------------*/
 
 uint16_t wExpected;
 const unsigned char CRC8_INIT = 0xff;
@@ -110,7 +109,7 @@ void Append_CRC16_Check_Sum(uint8_t *pchMessage, uint32_t dwLength)
     pchMessage[dwLength - 1] = (uint8_t)((wCRC >> 8) & 0x00ff);
 }
 
-/*������ת��Ϊ�ַ���*/
+/*整数型转化为字符型*/
 void int_into_char(char *Data, int16_t i)
 {
     char data[10];
@@ -118,12 +117,12 @@ void int_into_char(char *Data, int16_t i)
     strcpy(Data, data);
 }
 
-/*---------------------------------����ϵͳʹ�õ�CRC end----------------------------*/
+/*---------------------------------裁判系统使用的CRC end----------------------------*/
 
 /**
- * @brief   ���У��
+ * @brief   求和校验
  * @param   void *pvParameters
- * @retval  16λУ��ֵ
+ * @retval  16位校验值
  */
 uint16_t Sum_CheckSum(uint8_t *buf, uint16_t len)
 {

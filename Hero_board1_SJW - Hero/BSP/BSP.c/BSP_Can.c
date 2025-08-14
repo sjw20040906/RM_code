@@ -10,19 +10,18 @@
  */
 #include "BSP_Can.h"
 
-
-/*******************************ÓÃ»§Êı¾İ¶¨Òå************************************/
+/*******************************ç”¨æˆ·æ•°æ®å®šä¹‰************************************/
 void CAN_IT_Init(CAN_HandleTypeDef *hcanx, uint8_t Can_type);
 void CAN_SendData(QueueHandle_t CANx_Handle, CAN_HandleTypeDef *CANx, uint8_t id_type, uint32_t id, uint8_t data[8]);
 
 Can_Data_t Can_Data[2] = Can_DataGroundInit;
 #undef Can_DataGroundInit
-/***********************************½Ó¿Ú¸³Öµ************************************/
+/***********************************æ¥å£èµ‹å€¼************************************/
 Can_Fun_t Can_Fun = Can_FunGroundInit;
 #undef Can_FunGroundInit
 /*******************************************************************************/
 
-// CANÍ¨ĞÅ·¢ËÍ»º³åÇø
+// CANé€šä¿¡å‘é€ç¼“å†²åŒº
 uint8_t CAN1_0x1ff_Tx_Data[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 uint8_t CAN1_0x200_Tx_Data[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 uint8_t CAN1_0x2ff_Tx_Data[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -33,23 +32,23 @@ uint8_t CAN2_0x2ff_Tx_Data[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}
 
 /**
  * @Data   2023-08-07
- * @brief  CANÉ¸Ñ¡Æ÷³õÊ¼»¯,Æä½á¹ûÊÇ»á½ÓÊÕËùÓĞIDµÄ
+ * @brief  CANç­›é€‰å™¨åˆå§‹åŒ–,å…¶ç»“æœæ˜¯ä¼šæ¥æ”¶æ‰€æœ‰IDçš„
  * @param  CAN_FilterTypeDef *CAN_Filter, CAN_HandleTypeDef *hcanx
  * @retval void
  */
 static void CAN_FILTER_Init(CAN_FilterTypeDef *CAN_Filter, CAN_HandleTypeDef *hcanx)
 {
-  CAN_Filter->FilterFIFOAssignment = CAN_RX_FIFO0; // É¸Ñ¡Æ÷±»¹ØÁªµ½FIFO0
-  CAN_Filter->FilterBank = 0;                      // É¸Ñ¡Æ÷×é0
+  CAN_Filter->FilterFIFOAssignment = CAN_RX_FIFO0; // ç­›é€‰å™¨è¢«å…³è”åˆ°FIFO0
+  CAN_Filter->FilterBank = 0;                      // ç­›é€‰å™¨ç»„0
   CAN_Filter->SlaveStartFilterBank = 0;
-  CAN_Filter->FilterMode = CAN_FILTERMODE_IDMASK;  // ¹¤×÷ÔÚIDÑÚÂëÄ£Ê½
-  CAN_Filter->FilterScale = CAN_FILTERSCALE_32BIT; // É¸Ñ¡Æ÷Î»¿íÎªµ¥¸ö32Î»¡£
-  CAN_Filter->FilterActivation = ENABLE;           // Ê¹ÄÜÉ¸Ñ¡Æ÷
-  // Ê¹ÄÜÉ¸Ñ¡Æ÷£¬°´ÕÕ±êÖ¾µÄÄÚÈİ½øĞĞ±È¶ÔÉ¸Ñ¡£¬À©Õ¹ID²»ÊÇÈçÏÂµÄ¾ÍÅ×Æúµô£¬ÊÇµÄ»°£¬»á´æÈëFIFO0//
-  CAN_Filter->FilterIdHigh = 0x0000;     // ÒªÉ¸Ñ¡µÄID¸ßÎ»
-  CAN_Filter->FilterIdLow = 0x0000;      // ÒªÉ¸Ñ¡µÄIDµÍÎ»
-  CAN_Filter->FilterMaskIdHigh = 0x0000; // É¸Ñ¡Æ÷¸ß16Î»Ã¿Î»²»ĞëÆ¥Åä
-  CAN_Filter->FilterMaskIdLow = 0x0000;  // É¸Ñ¡Æ÷µÍ16Î»Ã¿Î»²»ĞëÆ¥Åä
+  CAN_Filter->FilterMode = CAN_FILTERMODE_IDMASK;  // å·¥ä½œåœ¨IDæ©ç æ¨¡å¼
+  CAN_Filter->FilterScale = CAN_FILTERSCALE_32BIT; // ç­›é€‰å™¨ä½å®½ä¸ºå•ä¸ª32ä½ã€‚
+  CAN_Filter->FilterActivation = ENABLE;           // ä½¿èƒ½ç­›é€‰å™¨
+  // ä½¿èƒ½ç­›é€‰å™¨ï¼ŒæŒ‰ç…§æ ‡å¿—çš„å†…å®¹è¿›è¡Œæ¯”å¯¹ç­›é€‰ï¼Œæ‰©å±•IDä¸æ˜¯å¦‚ä¸‹çš„å°±æŠ›å¼ƒæ‰ï¼Œæ˜¯çš„è¯ï¼Œä¼šå­˜å…¥FIFO0//
+  CAN_Filter->FilterIdHigh = 0x0000;     // è¦ç­›é€‰çš„IDé«˜ä½
+  CAN_Filter->FilterIdLow = 0x0000;      // è¦ç­›é€‰çš„IDä½ä½
+  CAN_Filter->FilterMaskIdHigh = 0x0000; // ç­›é€‰å™¨é«˜16ä½æ¯ä½ä¸é¡»åŒ¹é…
+  CAN_Filter->FilterMaskIdLow = 0x0000;  // ç­›é€‰å™¨ä½16ä½æ¯ä½ä¸é¡»åŒ¹é…
   if (HAL_CAN_ConfigFilter(hcanx, CAN_Filter) != HAL_OK)
   {
     Error_Handler();
@@ -58,7 +57,7 @@ static void CAN_FILTER_Init(CAN_FilterTypeDef *CAN_Filter, CAN_HandleTypeDef *hc
 
 /**
  * @Data    2021-08-07
- * @brief   canxÖĞ¶ÏÆô¶¯
+ * @brief   canxä¸­æ–­å¯åŠ¨
  * @param   CAN_HandleTypeDef *hcanx, uint8_t Can_type
  * @retval  void
  */
@@ -66,22 +65,22 @@ void CAN_IT_Init(CAN_HandleTypeDef *hcanx, uint8_t Can_type)
 {
   uint8_t Canx_type = Can_type - 1;
 
-  /*Ê¹ÄÜÂË²¨Æ÷*/
+  /*ä½¿èƒ½æ»¤æ³¢å™¨*/
   CAN_FILTER_Init(&Can_Data[Canx_type].CAN_FilterTypedef.CAN_Filter, hcanx);
-  /*ÆôÓÃCAN*/
+  /*å¯ç”¨CAN*/
   HAL_CAN_Start(hcanx);
-  /*Ê¹ÄÜCANµÄITÖĞ¶Ï*/
-  // HAL_CAN_Receive_IT(&hcan1, CAN_FIFO0);   //Æô¶¯CAN½ÓÊÕÖĞ¶Ï
+  /*ä½¿èƒ½CANçš„ITä¸­æ–­*/
+  // HAL_CAN_Receive_IT(&hcan1, CAN_FIFO0);   //å¯åŠ¨CANæ¥æ”¶ä¸­æ–­
   //__HAL_CAN_ENABLE_IT(hcanx, CAN_IT_RX_FIFO0_MSG_PENDING); //  CAN_IT_FMP0
   HAL_CAN_ActivateNotification(hcanx, CAN_IT_RX_FIFO0_MSG_PENDING);
 }
 
 /**
- * @brief  CAN·¢ËÍÊı¾İ
- * @param  CANx	    CAN±àºÅ
- * 		id_type 	idÀàĞÍ CAN_ID_STD£¬ CAN_ID_EXT
- *			id			idºÅ
- * 		data[8]		8¸öÊı¾İ
+ * @brief  CANå‘é€æ•°æ®
+ * @param  CANx	    CANç¼–å·
+ * 		id_type 	idç±»å‹ CAN_ID_STDï¼Œ CAN_ID_EXT
+ *			id			idå·
+ * 		data[8]		8ä¸ªæ•°æ®
  * @retval None
  */
 void CAN_SendData(QueueHandle_t CANx_Handle, CAN_HandleTypeDef *CANx, uint8_t id_type, uint32_t id, uint8_t data[8])
@@ -95,12 +94,12 @@ void CAN_SendData(QueueHandle_t CANx_Handle, CAN_HandleTypeDef *CANx, uint8_t id
   }
   else
   {
-    Can_Send_Data.CAN_TxHeader.ExtId = id; // IDºÅ
+    Can_Send_Data.CAN_TxHeader.ExtId = id; // IDå·
   }
 
-  Can_Send_Data.CAN_TxHeader.IDE = id_type;      // IDÀàĞÍ
-  Can_Send_Data.CAN_TxHeader.RTR = CAN_RTR_DATA; // ·¢ËÍµÄÎªÊı¾İ
-  Can_Send_Data.CAN_TxHeader.DLC = 0x08;         // Êı¾İ³¤¶ÈÎª8×Ö½Ú
+  Can_Send_Data.CAN_TxHeader.IDE = id_type;      // IDç±»å‹
+  Can_Send_Data.CAN_TxHeader.RTR = CAN_RTR_DATA; // å‘é€çš„ä¸ºæ•°æ®
+  Can_Send_Data.CAN_TxHeader.DLC = 0x08;         // æ•°æ®é•¿åº¦ä¸º8å­—èŠ‚
   Can_Send_Data.CAN_TxHeader.TransmitGlobalTime = DISABLE;
 
   memcpy(Can_Send_Data.CANx_Send_RxMessage, data, sizeof(uint8_t[8]));
@@ -109,19 +108,19 @@ void CAN_SendData(QueueHandle_t CANx_Handle, CAN_HandleTypeDef *CANx, uint8_t id
 }
 
 /**
- * @brief  CAN½ÓÊÜÊı¾İÖĞ¶Ïº¯Êı
- * @param  CANx 			CAN±àºÅ
- * 		    id_type 	idÀàĞÍ CAN_ID_STD£¬ CAN_ID_EXT
- *			    id				idºÅ
- * 		    data[8]		8¸öÊı¾İ
+ * @brief  CANæ¥å—æ•°æ®ä¸­æ–­å‡½æ•°
+ * @param  CANx 			CANç¼–å·
+ * 		    id_type 	idç±»å‹ CAN_ID_STDï¼Œ CAN_ID_EXT
+ *			    id				idå·
+ * 		    data[8]		8ä¸ªæ•°æ®
  * @retval None
  */
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
-  static uint8_t Can_Type = 0; // Çø±ğCan1ÓëCan2
+  static uint8_t Can_Type = 0; // åŒºåˆ«Can1ä¸Can2
   static Can_Export_Data_t Can_Export_Data[2];
   BaseType_t xHigherPriorityTask;
-  /*ÅĞ¶ÏÊÇÄÄÒ»¸öCan¿Ú´«»ØµÄĞÅÏ¢*/
+  /*åˆ¤æ–­æ˜¯å“ªä¸€ä¸ªCanå£ä¼ å›çš„ä¿¡æ¯*/
   if (hcan->Instance == CAN1)
     Can_Type = 0;
   else
@@ -131,7 +130,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
   Can_Export_Data[Can_Type].CAN_RxHeader = Can_Data[Can_Type].CAN_RxTypedef.CANx_RxHeader;
   memcpy(&Can_Export_Data[Can_Type].CANx_Export_RxMessage, Can_Data[Can_Type].CAN_RxTypedef.CAN_RxMessage, sizeof(uint8_t[8]));
 
-  /*°Ñ½ÓÊÕÊı¾İ·¢¸ø½ÓÊÕ¶ÓÁĞ	*/
+  /*æŠŠæ¥æ”¶æ•°æ®å‘ç»™æ¥æ”¶é˜Ÿåˆ—	*/
   if (!Can_Type)
     xQueueSendToBackFromISR(CAN1_ReceiveHandle, &Can_Export_Data[Can_Type], &xHigherPriorityTask);
   else

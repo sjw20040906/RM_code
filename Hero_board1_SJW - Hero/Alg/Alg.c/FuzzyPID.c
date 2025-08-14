@@ -1,8 +1,8 @@
 /**
  * @file FuzzyPID.c
  * @author Why/xyz
- * @brief ÕâÀïµÄº¯ÊýÉè¼ÆÏë·¨ÊÇÐ´µ½PIDµÄ¼ÆËãÄÚ²¿È¥£¬ÊµÏÖFuzzyÔÚÏßµ÷ÕûPID²ÎÊý
- *		  ÐèÒªµ÷µÄÊýÖ»ÓÐPIDµÄ×î´ó¸Ä±ä·¶Î§
+ * @brief è¿™é‡Œçš„å‡½æ•°è®¾è®¡æƒ³æ³•æ˜¯å†™åˆ°PIDçš„è®¡ç®—å†…éƒ¨åŽ»ï¼Œå®žçŽ°Fuzzyåœ¨çº¿è°ƒæ•´PIDå‚æ•°
+ *		  éœ€è¦è°ƒçš„æ•°åªæœ‰PIDçš„æœ€å¤§æ”¹å˜èŒƒå›´
  * @version 0.1
  * @date 2023-09-28
  *
@@ -29,7 +29,7 @@ FUZZYPID_Data_t fuzzy_pid_pitch_out = {0};
 #define PM 2
 #define PB 3
 
-/* ¹æÔò¿â */
+/* è§„åˆ™åº“ */
 static const float ruleKp[7][7] = {
     PB, PB, PM, PM, PS, ZO, ZO,
     PB, PB, PM, PS, PS, ZO, NS,
@@ -75,19 +75,19 @@ void fuzzy_init(FUZZYPID_Data_t *PID, float _maximum, float _minimum, float _qkp
 }
 
 /**
-  * @brief  °ÑÎó²îºÍÎó²îµÄ±ä»¯Á¿×ª»¯µ½-3µ½3µÄÂÛÓòÉÏ£¬ÏÈËãeÔÙËãec
-  * @param  FUZZYPID_Data_t *PID --¶ÔÓ¦µÄFuzzyPID½á¹¹ÌåÖ¸Õë
-      float thisError      --Õâ´ÎµÄÎó²î
-      float lastError       --ÉÏÒ»´ÎµÄÎó²î
-      float *qValue         --´æEºÍECÁ¿»¯µÄÊý×éÊ×µØÖ·Ö¸Õë
+  * @brief  æŠŠè¯¯å·®å’Œè¯¯å·®çš„å˜åŒ–é‡è½¬åŒ–åˆ°-3åˆ°3çš„è®ºåŸŸä¸Šï¼Œå…ˆç®—eå†ç®—ec
+  * @param  FUZZYPID_Data_t *PID --å¯¹åº”çš„FuzzyPIDç»“æž„ä½“æŒ‡é’ˆ
+      float thisError      --è¿™æ¬¡çš„è¯¯å·®
+      float lastError       --ä¸Šä¸€æ¬¡çš„è¯¯å·®
+      float *qValue         --å­˜Eå’ŒECé‡åŒ–çš„æ•°ç»„é¦–åœ°å€æŒ‡é’ˆ
   * @retval None
   */
 void Linear_Quantization(FUZZYPID_Data_t *PID, float thisError, float lastError, float *qValue)
 {
   float deltaError;
-  deltaError = thisError - lastError; // ¼ÆËãÆ«²îÔöÁ¿
+  deltaError = thisError - lastError; // è®¡ç®—åå·®å¢žé‡
 
-  // EºÍECµÄÁ¿»¯
+  // Eå’ŒECçš„é‡åŒ–
   qValue[0] = 3.0f * thisError * 2 / (PID->error_maximum - PID->error_minimum);
   qValue[1] = 3.0f * deltaError / (PID->error_maximum - PID->error_minimum);
   if (qValue[0] >= 5)
@@ -108,10 +108,10 @@ void Linear_Quantization(FUZZYPID_Data_t *PID, float thisError, float lastError,
   }
 }
 /**
-  * @brief  Á¥Êô¶È¼ÆËãº¯Êý£¬Ê¹ÓÃ´¿ÏßÐÔµÄÕÛÏß
-  * @param  float *ms 		--¶ÔÓ¦Ä£ºý×Ó¼¯µÄÁ¥Êô¶È
-      float qv      	--Á¿»¯ºóµÄÄ£ºýÁ¿
-      int *index      --¸ù¾Ý´óÐ¡´æ¹æÔò±íÏÂ±êµÄÊý×éÊ×µØÖ·
+  * @brief  éš¶å±žåº¦è®¡ç®—å‡½æ•°ï¼Œä½¿ç”¨çº¯çº¿æ€§çš„æŠ˜çº¿
+  * @param  float *ms 		--å¯¹åº”æ¨¡ç³Šå­é›†çš„éš¶å±žåº¦
+      float qv      	--é‡åŒ–åŽçš„æ¨¡ç³Šé‡
+      int *index      --æ ¹æ®å¤§å°å­˜è§„åˆ™è¡¨ä¸‹æ ‡çš„æ•°ç»„é¦–åœ°å€
   * @retval None
   */
 void Membership_Calc(float *ms, float qv, int8_t *index)
@@ -161,22 +161,22 @@ void Membership_Calc(float *ms, float qv, int8_t *index)
 }
 
 /**
-  * @brief ¸üÐÂFuzzyPIDÊä³öµÄPID²ÎÊýµÄ¸Ä±äÖµ
-  * @param  FUZZYPID_Data_t *PID --¶ÔÓ¦µÄÄ£ºýPID½á¹¹Ìå
-      float thisError       --Õâ´ÎµÄÎó²î
-      float lastError       --ÉÏ´ÎµÄÎó²î
+  * @brief æ›´æ–°FuzzyPIDè¾“å‡ºçš„PIDå‚æ•°çš„æ”¹å˜å€¼
+  * @param  FUZZYPID_Data_t *PID --å¯¹åº”çš„æ¨¡ç³ŠPIDç»“æž„ä½“
+      float thisError       --è¿™æ¬¡çš„è¯¯å·®
+      float lastError       --ä¸Šæ¬¡çš„è¯¯å·®
   * @retval None
   */
 void FuzzyComputation(FUZZYPID_Data_t *PID, float thisError, float lastError)
 {
-  /* pidÔöÁ¿Öµ */
+  /* pidå¢žé‡å€¼ */
   float pidvalue[3] = {0};
 
-  /* Á¿»¯ */
+  /* é‡åŒ– */
   Linear_Quantization(PID, thisError, lastError, PID->error_map);
-  // ¼ÆËãeµÄÁ¥Êô¶ÈºÍË÷Òý */
+  // è®¡ç®—eçš„éš¶å±žåº¦å’Œç´¢å¼• */
   Membership_Calc(PID->error_membership_degree, PID->error_map[0], PID->error_membership_index);
-  /* ¼ÆËãecµÄÁ¥Êô¶ÈºÍË÷Òý */
+  /* è®¡ç®—ecçš„éš¶å±žåº¦å’Œç´¢å¼• */
   Membership_Calc(PID->d_error_membership_degree, PID->error_map[1], PID->d_error_membership_index);
 
   pidvalue[0] += PID->error_membership_degree[0] * PID->d_error_membership_degree[0] * ruleKp[PID->error_membership_index[0]][PID->d_error_membership_index[0]];
@@ -194,8 +194,8 @@ void FuzzyComputation(FUZZYPID_Data_t *PID, float thisError, float lastError)
   pidvalue[2] += PID->error_membership_degree[1] * PID->d_error_membership_degree[0] * ruleKd[PID->error_membership_index[1]][PID->d_error_membership_index[0]];
   pidvalue[2] += PID->error_membership_degree[1] * PID->d_error_membership_degree[1] * ruleKd[PID->error_membership_index[1]][PID->d_error_membership_index[1]];
 
-  /* pidÔöÁ¿ÐÞÕý */
-  // µÃµ½µÄÊÇpid¸Ä±äµÄ±ÈÀý£¬Ðè³ËÒÔqkp/qki/qkd·¢»Ó×÷ÓÃ
+  /* pidå¢žé‡ä¿®æ­£ */
+  // å¾—åˆ°çš„æ˜¯pidæ”¹å˜çš„æ¯”ä¾‹ï¼Œéœ€ä¹˜ä»¥qkp/qki/qkdå‘æŒ¥ä½œç”¨
   PID->delta_kp = pidvalue[0] / 3;
   PID->delta_ki = pidvalue[1] / 3;
   PID->delta_kd = pidvalue[2] / 3;

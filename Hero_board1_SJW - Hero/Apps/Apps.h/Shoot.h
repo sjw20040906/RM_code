@@ -23,7 +23,7 @@
 #define Heat_17mm 10
 
 /**
- * @brief  ·¢ÉäÆ÷¹¤×÷×´Ì¬
+ * @brief  å‘å°„å™¨å·¥ä½œçŠ¶æ€
  * @param
  */
 typedef enum
@@ -45,9 +45,9 @@ typedef enum
 
 typedef struct Shoot_Data_t
 {
-	uint16_t Heat_Now;	 // µ±Ç°ÈÈÁ¿
-	uint16_t Heat_Limit; // ÈÈÁ¿ÏŞÖÆ
-	bool Shoot_Switch;	 // ·¢Éä¿ª¹Ø
+	uint16_t Heat_Now;	 // å½“å‰çƒ­é‡
+	uint16_t Heat_Limit; // çƒ­é‡é™åˆ¶
+	bool Shoot_Switch;	 // å‘å°„å¼€å…³
 } Shoot_Data_t;
 
 typedef struct Shoot_Fun_t

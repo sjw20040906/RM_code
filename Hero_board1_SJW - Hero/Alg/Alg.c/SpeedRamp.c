@@ -10,10 +10,9 @@
  */
 #include "SpeedRamp.h"
 
-
 /**
- * @brief  б�º�������
- * @param	б�º����ṹ��
+ * @brief  斜坡函数计算
+ * @param	斜坡函数结构体
  * @retval None
  */
 int16_t SpeedRampCalc(SpeedRamp_t *SpeedRamp)
@@ -32,8 +31,8 @@ int16_t SpeedRampCalc(SpeedRamp_t *SpeedRamp)
 }
 
 /**
- * @brief  б�¼���ֵ����
- * @param	б�º����ṹ��
+ * @brief  斜坡计数值归零
+ * @param	斜坡函数结构体
  * @retval None
  */
 void CountReset(SpeedRamp_t *SpeedRamp)
@@ -51,9 +50,9 @@ void CountReset(SpeedRamp_t *SpeedRamp)
 }
 
 /**
- * @brief  б�º���,ʹĿ�����ֵ������������ֵ
- * @param  �����������,��ǰ���,�仯�ٶ�(Խ��Խ��)
- * @retval ��ǰ���
+ * @brief  斜坡函数,使目标输出值缓慢等于期望值
+ * @param  期望最终输出,当前输出,变化速度(越大越快)
+ * @retval 当前输出
  * @attention
  */
 float RAMP_float(float final, float now, float ramp)

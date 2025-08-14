@@ -1,7 +1,7 @@
 /**
  * @file FrictionWheel.c
  * @author Why
- * @brief ����Ħ���ֵĿ�������
+ * @brief 处理摩擦轮的控制问题
  * @version 0.1
  * @date 2023-08-14
  *
@@ -10,8 +10,7 @@
  */
 #include "FrictionWheel.h"
 
-
-/**************�û����ݶ���****************/
+/**************用户数据定义****************/
 void Fric_Processing(void);
 void Fric_Judge_ReadyOrNot(void);
 void Fric_Set_targetSpeed(void);
@@ -19,24 +18,24 @@ void PID_Clear_FricL(void);
 void PID_Clear_FricR(void);
 float PID_Model4_Update(incrementalpid_t *pid, FUZZYPID_Data_t *PID, float _set_point, float _now_point);
 
-/****************�ӿڶ���******************/
+/****************接口定义******************/
 Fric_Fun_t Fric_Fun = Fric_FunGroundInit;
 #undef Fric_FunGroundInit
 Fric_Data_t Fric_Data = Fric_DataGroundInit;
 #undef Fric_DataGroundInit
 
 /**
- * @brief  Ħ���ֿ����ܴ�������
+ * @brief  摩擦轮控制总处理函数
  * @param  void
  * @retval void
  * @attention
  */
 void Fric_Processing()
 {
-  /* �趨Ŀ��ֵ */
+  /* 设定目标值 */
   Fric_Set_targetSpeed();
 
-  /***********����Ŀ��ֵ**********/
+  /***********目标角度设定**********/
   M3508_Array[Fric_Front_1].targetSpeed = Fric_Data.Required_Speed;
   M3508_Array[Fric_Front_2].targetSpeed = Fric_Data.Required_Speed;
   M3508_Array[Fric_Front_3].targetSpeed = Fric_Data.Required_Speed;
@@ -44,7 +43,7 @@ void Fric_Processing()
   M3508_Array[Fric_Back_2].targetSpeed = Fric_Data.Required_Speed;
   M3508_Array[Fric_Back_3].targetSpeed = Fric_Data.Required_Speed;
 
-  /************PID����************/
+  /************PID计算************/
   M3508_Array[Fric_Front_1].outCurrent = PID_Model4_Update(&M3508_FricF1_Pid, &fuzzy_pid_shoot_F1, M3508_Array[Fric_Front_1].targetSpeed, M3508_Array[Fric_Front_1].realSpeed);
   M3508_Array[Fric_Front_2].outCurrent = PID_Model4_Update(&M3508_FricF2_Pid, &fuzzy_pid_shoot_F2, M3508_Array[Fric_Front_2].targetSpeed, M3508_Array[Fric_Front_2].realSpeed);
   M3508_Array[Fric_Front_3].outCurrent = PID_Model4_Update(&M3508_FricF3_Pid, &fuzzy_pid_shoot_F3, M3508_Array[Fric_Front_3].targetSpeed, M3508_Array[Fric_Front_3].realSpeed);
@@ -54,10 +53,10 @@ void Fric_Processing()
 }
 
 /**
- * @brief  ��Ħ���ֵ��ٶȴﵽtarget����ʱ��ΪĦ�����Ѿ�����
+ * @brief  当摩擦轮的速度达到target附近时认为摩擦轮已经就绪
  * @param  void
  * @retval void
- * @attention  �������δ��������ΪH�����arm_abs_q15��arm�����ᱨ��
+ * @attention  这个函数未启用是因为H板代码arm_abs_q15等arm函数会报错
  */
 void Fric_Judge_ReadyOrNot()
 {
@@ -78,7 +77,7 @@ void Fric_Judge_ReadyOrNot()
 }
 
 /**
- * @brief  �趨Ħ���ֵ�Ŀ���ٶ�
+ * @brief  设定摩擦轮的目标速度
  * @param  void
  * @retval void
  * @attention
@@ -98,7 +97,7 @@ void Fric_Set_targetSpeed(void)
 }
 
 /**
- * @brief  ��Ħ���ֵ�PID����
+ * @brief  左摩擦轮的PID重置
  * @param  void
  * @retval void
  * @attention//75 0.03 05 //3.0 0.03 0
@@ -109,7 +108,7 @@ void PID_Clear_FricL(void)
 }
 
 /**
- * @brief  ��Ħ���ֵ�PID����
+ * @brief  右摩擦轮的PID重置
  * @param  void
  * @retval void
  * @attention

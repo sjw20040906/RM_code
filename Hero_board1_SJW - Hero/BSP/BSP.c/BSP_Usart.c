@@ -1,7 +1,7 @@
 #include "BSP_Usart.h"
 
 
-/******************�ӿ�����*****************/
+/******************接口声明*****************/
 Usart_Data_t Usart_Data = Usart_DataGroundInit;
 #undef Usart_DataGroundInit
 /**
@@ -11,21 +11,21 @@ Usart_Data_t Usart_Data = Usart_DataGroundInit;
  */
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-	// BaseType_t xHigherPriorityTask;        //FreeROTS�˳��ж�ʱ�ж��Ƿ�Ҫ���������л�
-	// �����������USART3,��Ϊң��������
+	// BaseType_t xHigherPriorityTask;        //FreeROTS退出中断时判断是否要进行任务切换
+	// 如果数据来自USART3,即为遥控器数据
 	if (huart->Instance == USART3)
 	{
 #if (RemoteControlMethod == TDF)
-		{ // ��ط�ң����
+		{ // 天地飞遥控器
 			memcpy(SBUS_RXBuffer, SBUS_Rx_Data, sizeof(SBUS_Rx_Data));
-			SBUS_RX_Finish = 1; // �ѽ�����һ������
+			SBUS_RX_Finish = 1; // 已接收完一包数据
 		}
 #elif (RemoteControlMethod == DT7)
-		// DT7ң����
-		DT7_RX_Finish = 1; // �ѽ�����һ������
+		// DT7遥控器
+		DT7_RX_Finish = 1; // 已接受完一包数据
 #endif
 	}
-	// �����������USART2,��Ϊ��λ������
+	// 如果数据来自USART2,即为上位机数据
 	/*	if(huart->Instance == USART2 )
 		{
 				uint8_t Buf[UpperCom_MAX_BUF];

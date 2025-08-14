@@ -1,6 +1,6 @@
 /**
  * @file BSP_BoardCommunication.c
- * @author lxr(784457420@qq.com)��ZS
+ * @author lxr(784457420@qq.com)，ZS
  * @brief
  * @version 2.5
  * @date 2025-1-15
@@ -9,7 +9,6 @@
  *
  */
 #include "BSP_BoardCommunication.h"
-
 
 ControlMessge ControlMes;
 ext_robot_keycommand_t ext_robot_keycommand;
@@ -20,13 +19,13 @@ void Board1_getKeycommandInfo(Can_Export_Data_t RxMessage);
 
 Board1_FUN_t Board1_FUN = Board1_FunGroundInit;
 
-// �˺����������ձ��Ĺ����������ݲ����͡�
+// 此函数用来按照报文规则生成数据并发送。
 void Board1_To_2(void)
 {
   uint8_t data[8] = {0};
   uint8_t data2_Fun[8] = {0};
 
-  // �������
+  // 打包数据
   data[0] = ControlMes.x_velocity >> 8;
   data[1] = ControlMes.x_velocity;
   data[2] = ControlMes.y_velocity >> 8;
@@ -35,7 +34,7 @@ void Board1_To_2(void)
   data[5] = ControlMes.z_rotation_velocity;
   data[6] = ControlMes.yaw_velocity >> 8;
   data[7] = ControlMes.yaw_velocity;
-  // ���ݷ���
+  // 数据发送
   Can_Fun.CAN_SendData(CAN_SendHandle, &hcan2, CAN_ID_STD, CAN_ID_CHASSIS, data);
 
   data2_Fun[0] = ControlMes.yaw_position >> 8;
@@ -47,7 +46,7 @@ void Board1_To_2(void)
   data2_Fun[3] |= (uint8_t)(ControlMes.modelFlag & 0x01) << 3;
   data2_Fun[4] = M3508_Array[Dial_Wheel].realCurrent >> 8;
   data2_Fun[5] = M3508_Array[Dial_Wheel].realCurrent;
-  // ���ݷ���
+  // 数据发送
   Can_Fun.CAN_SendData(CAN_SendHandle, &hcan2, CAN_ID_STD, CAN_ID_GIMBAL, data2_Fun);
 }
 
