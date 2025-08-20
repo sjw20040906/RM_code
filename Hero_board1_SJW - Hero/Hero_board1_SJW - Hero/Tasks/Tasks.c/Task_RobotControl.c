@@ -31,8 +31,8 @@ void Robot_Control(void const *argument)
         J4340_Fun.J4340_setParameter(J4340s_Pitch.outPosition, J4340s_Pitch.outSpeed, J4340s_Pitch.outKp, J4340s_Pitch.outKd, J4340s_Pitch.outTorque, data3);
         /****************发送电流数据***************/
         Can_Fun.CAN_SendData(CAN_SendHandle, &hcan1, CAN_ID_STD, M3508_SENDID_Fric_Dial_1, data1);
-        Can_Fun.CAN_SendData(CAN_SendHandle, &hcan1, CAN_ID_STD, M3508_SENDID_Fric_Dial_2, data2);
-        Can_Fun.CAN_SendData(CAN_SendHandle, &hcan2, CAN_ID_STD, J4340_SENDID_Pitch, data3);
+        Can_Fun.CAN_SendData(CAN_SendHandle, &hcan2, CAN_ID_STD, M3508_SENDID_Fric_Dial_2, data2);
+        Can_Fun.CAN_SendData(CAN_SendHandle, &hcan1, CAN_ID_STD, J4340_SENDID_Pitch, data3);
         /****************发送电流数据 end***************/
 
         vTaskDelayUntil(&xLastWakeTime, TimeIncrement);

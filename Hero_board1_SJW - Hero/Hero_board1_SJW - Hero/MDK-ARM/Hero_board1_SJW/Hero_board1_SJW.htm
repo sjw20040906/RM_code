@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Hero_board1_SJW\Hero_board1_SJW.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Hero_board1_SJW\Hero_board1_SJW.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Aug 19 15:44:49 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Aug 20 12:02:44 2025
 <BR><P>
 <H3>Maximum Stack Usage =        488 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -195,8 +195,8 @@ Function Pointers
 Global Symbols
 </H3>
 <P><STRONG><a name="[a0]"></a>__main</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, __main.o(!!!main))
-<BR><BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<BR><BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
 <P><STRONG><a name="[a1]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter))
@@ -286,8 +286,8 @@ Global Symbols
 <P><STRONG><a name="[1f7]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000E))
 
 <P><STRONG><a name="[a2]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
-<BR><BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+<BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
 </UL>
 
 <P><STRONG><a name="[1f8]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
@@ -776,7 +776,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpperCom_Send_To_Up
 </UL>
 
-<P><STRONG><a name="[97]"></a>Can1Receives</STRONG> (Thumb, 58 bytes, Stack size 56 bytes, task_canreceive.o(i.Can1Receives))
+<P><STRONG><a name="[97]"></a>Can1Receives</STRONG> (Thumb, 92 bytes, Stack size 56 bytes, task_canreceive.o(i.Can1Receives))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = Can1Receives &rArr; xQueueReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
@@ -784,7 +784,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> freertos.o(.constdata)
 </UL>
-<P><STRONG><a name="[98]"></a>Can2Receives</STRONG> (Thumb, 94 bytes, Stack size 56 bytes, task_canreceive.o(i.Can2Receives))
+<P><STRONG><a name="[98]"></a>Can2Receives</STRONG> (Thumb, 84 bytes, Stack size 56 bytes, task_canreceive.o(i.Can2Receives))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = Can2Receives &rArr; xQueueReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
@@ -804,7 +804,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> cloud_control.o(.data)
 </UL>
-<P><STRONG><a name="[1e]"></a>Cloud_Pitch_Angle_Set</STRONG> (Thumb, 238 bytes, Stack size 16 bytes, cloud_control.o(i.Cloud_Pitch_Angle_Set))
+<P><STRONG><a name="[1e]"></a>Cloud_Pitch_Angle_Set</STRONG> (Thumb, 230 bytes, Stack size 16 bytes, cloud_control.o(i.Cloud_Pitch_Angle_Set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Cloud_Pitch_Angle_Set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;One_Kalman_Filter
@@ -918,7 +918,7 @@ Global Symbols
 <P><STRONG><a name="[25]"></a>Fric_Judge_ReadyOrNot</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, frictionwheel.o(i.Fric_Judge_ReadyOrNot))
 <BR>[Address Reference Count : 1]<UL><LI> frictionwheel.o(.data)
 </UL>
-<P><STRONG><a name="[24]"></a>Fric_Processing</STRONG> (Thumb, 322 bytes, Stack size 8 bytes, frictionwheel.o(i.Fric_Processing))
+<P><STRONG><a name="[24]"></a>Fric_Processing</STRONG> (Thumb, 330 bytes, Stack size 8 bytes, frictionwheel.o(i.Fric_Processing))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Fric_Processing &rArr; PID_Model4_Update &rArr; FuzzyComputation &rArr; Membership_Calc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Model4_Update

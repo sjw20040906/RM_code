@@ -26,11 +26,17 @@ void Can1Receives(void const *argument)
   {
     xQueueReceive(CAN1_ReceiveHandle, &Can_Export_Data, portMAX_DELAY);
     ID = Can_Export_Data.CAN_RxHeader.StdId;
+		J4340_RxID = (Can_Export_Data.CANx_Export_RxMessage[0]) & 0x0F;
     // 接收摩擦轮电机 拨盘电机 反馈数据
-    if (ID >= M3508_READID_START && ID <= M3508_READID_END)
+    if (ID >= M3508_READID_START_1 && ID <= M3508_READID_END_1)
     {
       M3508_FUN.M3508_getInfo(Can_Export_Data);
     }
+		else if (J4340_RxID == J4340_READID_PITCH)
+    {
+      J4340_Fun.J4340_getInfo(Can_Export_Data);
+    }
+
   }
 }
 
@@ -48,14 +54,15 @@ void Can2Receives(void const *argument)
   {
     xQueueReceive(CAN2_ReceiveHandle, &Can_Export_Data, portMAX_DELAY);
     ID = Can_Export_Data.CAN_RxHeader.StdId;
-    J4340_RxID = (Can_Export_Data.CANx_Export_RxMessage[0]) & 0x0F;
-    if (ID == CAN_ID_CHASSIS)
+
+		if(ID >= M3508_READID_START_2 && ID <= M3508_READID_END_2)
+    {
+      M3508_FUN.M3508_getInfo(Can_Export_Data);
+    }
+
+		else if (ID == CAN_ID_CHASSIS)
     {
       Board1_FUN.Board1_getGimbalInfo(Can_Export_Data);
-    }
-    else if (J4340_RxID == J4340_READID_PITCH)
-    {
-      J4340_Fun.J4340_getInfo(Can_Export_Data);
     }
   }
 }

@@ -14,11 +14,11 @@
 // 重新安装电机或移用代码时需要重新测量这些值（toalAngle）后再允许运动。
 
 /****************Pithch限位*****************/
-const float Delta_Pitch_Min = -15;
-const float Delta_Pitch_Max = 10;
-const float Cloud_Pitch_Min = -15;
-const float Cloud_Pitch_Max = 10;
-const float Pitch_Angle_Init = -15;
+const float Delta_Pitch_Min = -30;
+const float Delta_Pitch_Max = 50;
+const float Cloud_Pitch_Min = -30;
+const float Cloud_Pitch_Max = 50;
+const float Pitch_Angle_Init = 0;
 const float Cloud_Pitch_Center = 0;
 const float Cloud_Pitch_Derta = Cloud_Pitch_Center - Cloud_Pitch_Min;
 /****************Pitch限位  End*****************/
@@ -30,9 +30,9 @@ float Cloud_Init_Angle;
 extern Saber_Angle_t Saber_Angle;
 float Pitch_Torque = 3.f; // 云台所需扭矩
 float Pitch_v = 2;
-float Pitch_Kp = 10.5;
+float Pitch_Kp = 50;
 float Pitch_Kd = 2;
-float Pitch_RC_Sen = 0.0004;
+float Pitch_RC_Sen = 0.001;
 int16_t Cloud_Aim_Pitch_Flag;
 int16_t Cloud_Manual_Pitch_Flag;
 int Aim_Flag = 0;
@@ -60,7 +60,7 @@ void Cloud_Init(void)
 {
 	// 保存启动时刻的机械角度
 	// Cloud_Manual_Pitch_Flag = Cloud.Target_Pitch;
-	Cloud.Target_Pitch = J4340s_Pitch.outPosition;
+	Cloud.Target_Pitch = Pitch_Angle_Init;
 	Cloud.Pitch_Raw = J4340s_Pitch.outPosition;
 	Cloud.AutoAim_Pitch = 0;
 

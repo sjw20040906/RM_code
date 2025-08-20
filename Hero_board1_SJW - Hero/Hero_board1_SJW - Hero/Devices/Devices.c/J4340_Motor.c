@@ -14,6 +14,8 @@
 J4340s_t J4340s_Pitch;                      // 8
 J4340s_t *J4340_Array[1] = {&J4340s_Pitch}; // 对应电机的ID必须为：索引+1
 #define J4340_Amount 1
+
+/****************函数声明****************/
 void J4340_setParameter(float uq1, float uq2, float uq3, float uq4, float uq5, uint8_t *data);
 void J4340_Enable(void);
 void J4340_Save_Pos_Zero(void);
@@ -21,6 +23,7 @@ void J4340_getInfo(Can_Export_Data_t RxMessage);
 void J4340_setTargetAngle(J4340s_t *J4340, int32_t angle);
 void J4340_Reset(J4340s_t *J4340);
 void Check_J4340(void);
+/****************函数声明end****************/
 
 J4340_Fun_t J4340_Fun = J4340_FunGroundInit;
 #undef J4340_FunGroundInit
@@ -50,7 +53,7 @@ static int float_to_uint(float X_float, float X_min, float X_max, int bits)
 }
 
 /**
- * @brief  设置J4340电机参数（id号为8）
+ * @brief  设置J4340电机参数
  * @param  uq1：角度  uq2：转速  uq3：Kp  uq4：Kd  uq5：转矩
  * @retval None
  */
@@ -104,7 +107,7 @@ void J4340_Enable()
     Can_Send_Data.CANx_Send_RxMessage[6] = 0xFF;
     Can_Send_Data.CANx_Send_RxMessage[7] = 0xFC;
 
-    Can_Fun.CAN_SendData(CAN_SendHandle, &hcan2, CAN_ID_STD, 0x001, Can_Send_Data.CANx_Send_RxMessage);
+    Can_Fun.CAN_SendData(CAN_SendHandle, &hcan1, CAN_ID_STD, 0x001, Can_Send_Data.CANx_Send_RxMessage);
 }
 /**
  * @brief  重新设置J4340电机零点
@@ -129,7 +132,7 @@ void J4340_Save_Pos_Zero(void)
     Can_Send_Data.CANx_Send_RxMessage[6] = 0xFF;
     Can_Send_Data.CANx_Send_RxMessage[7] = 0xFE;
 
-    Can_Fun.CAN_SendData(CAN_SendHandle, &hcan2, CAN_ID_STD, 0x001, Can_Send_Data.CANx_Send_RxMessage);
+    Can_Fun.CAN_SendData(CAN_SendHandle, &hcan1, CAN_ID_STD, 0x001, Can_Send_Data.CANx_Send_RxMessage);
 }
 
 /**

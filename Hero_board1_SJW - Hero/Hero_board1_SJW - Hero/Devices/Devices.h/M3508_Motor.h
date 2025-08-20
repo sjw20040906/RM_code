@@ -22,8 +22,10 @@
  */
 #define M3508_SENDID_Fric_Dial_1 0x200
 #define M3508_SENDID_Fric_Dial_2 0x1FF
-#define M3508_READID_START 0x201
-#define M3508_READID_END 0x207
+#define M3508_READID_START_1 0x201
+#define M3508_READID_END_1 0x204
+#define M3508_READID_START_2 0x205
+#define M3508_READID_END_2 0x207
 #define M3508_MaxOutput 16384           // 发送给电机的最大控制值
 #define M3508_CurrentRatio 819.2f       // 16384/20A = 819.2->1A
 #define M3508_ReductionRatio 3591 / 187 // 3508电机减速比

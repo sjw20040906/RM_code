@@ -36,11 +36,11 @@ void Fric_Processing()
   Fric_Set_targetSpeed();
 
   /***********目标角度设定**********/
-  M3508_Array[Fric_Front_1].targetSpeed = Fric_Data.Required_Speed;
-  M3508_Array[Fric_Front_2].targetSpeed = Fric_Data.Required_Speed;
+  M3508_Array[Fric_Front_1].targetSpeed = -Fric_Data.Required_Speed;
+  M3508_Array[Fric_Front_2].targetSpeed = -Fric_Data.Required_Speed;
   M3508_Array[Fric_Front_3].targetSpeed = Fric_Data.Required_Speed;
-  M3508_Array[Fric_Back_1].targetSpeed = Fric_Data.Required_Speed;
-  M3508_Array[Fric_Back_2].targetSpeed = Fric_Data.Required_Speed;
+  M3508_Array[Fric_Back_1].targetSpeed = -Fric_Data.Required_Speed;
+  M3508_Array[Fric_Back_2].targetSpeed = -Fric_Data.Required_Speed;
   M3508_Array[Fric_Back_3].targetSpeed = Fric_Data.Required_Speed;
 
   /************PID计算************/
