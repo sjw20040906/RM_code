@@ -24,6 +24,8 @@ Fric_Fun_t Fric_Fun = Fric_FunGroundInit;
 Fric_Data_t Fric_Data = Fric_DataGroundInit;
 #undef Fric_DataGroundInit
 
+
+
 /**
  * @brief  摩擦轮控制总处理函数
  * @param  void
@@ -75,12 +77,12 @@ void Fric_Judge_ReadyOrNot()
 void Fric_Set_targetSpeed(void)
 {
 
-  if (ControlMes.fric_Flag == 0)
+  if (ControlMes.fric_Flag == 0 || Heat_Data.overheat)
   {
     Fric_Data.Required_Speed = 0;
     return;
   }
-  else if (ControlMes.fric_Flag == 1)
+  else if (ControlMes.fric_Flag == 1 && !Heat_Data.overheat)
   {
     Fric_Data.Required_Speed = Fric_SpeedLevel1;
   }
