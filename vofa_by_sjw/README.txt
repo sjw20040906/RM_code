@@ -1,0 +1,1 @@
+将上方vofa.c，sys.c和vofa.h,sys.h文件添加到工程中，在主函数中（或其他函数中调用）void JustFloat_Send(float * fdata,uint16_t fdata_num,USART_TypeDef *Usart_choose)函数即可实现发送，其中第一个参数为数据地址，如数组首地址等，第二个参数为数据个数，第三个参数为发送串口号，实例见截图，注意vofa.h文件中尾地址不可更改，利用usb转ttl将数据接受，打开vofa，选择justfloat，其他配置要与CUBEMX相同。（注意，A板中输入频率为12MHz，分频为168，其他系数会导致数据错乱）
