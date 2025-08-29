@@ -24,5 +24,5 @@ typedef struct
 } Usart_Data_t;
 
 extern Usart_Data_t Usart_Data;
-
+extern uint8_t vofa_RxData; 
 #endif

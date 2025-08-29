@@ -45,8 +45,6 @@ typedef struct
 	uint8_t shoot_state;
 	int16_t yaw_realAngle;			  // 下板传上来的yaw轴角度信息
 	float Speed_Bullet;				  // 裁判系统传来的弹速
-	uint16_t shooter_42mm_heat_now;	  // 裁判系统传来的当前枪口热量
-	uint16_t shooter_42mm_heat_limit; // 裁判系统传来的枪口热量上限
 	int16_t heat_remain;			  // 裁判系统传来的剩余热量
 	uint8_t modelFlag;				  // 比赛、检录模式
 	uint8_t shoot_Speed;			  // 射速

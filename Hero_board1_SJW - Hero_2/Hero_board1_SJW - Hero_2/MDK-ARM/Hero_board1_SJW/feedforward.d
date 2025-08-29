@@ -95,5 +95,3 @@
 .\hero_board1_sjw\feedforward.o: ../BSP/BSP.h/BSP_Usart.h
 .\hero_board1_sjw\feedforward.o: ../Devices/Devices.h/SBUS.h
 .\hero_board1_sjw\feedforward.o: ../Devices/Devices.h/J4340_Motor.h
-.\hero_board1_sjw\feedforward.o: ../Devices/Devices.h/Saber_C3.h
-.\hero_board1_sjw\feedforward.o: ../Apps/Apps.h/struct_typedef.h

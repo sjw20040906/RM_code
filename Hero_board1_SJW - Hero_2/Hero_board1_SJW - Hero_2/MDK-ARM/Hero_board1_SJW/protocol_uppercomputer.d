@@ -90,8 +90,6 @@
 .\hero_board1_sjw\protocol_uppercomputer.o: ../Devices/Devices.h/SBUS.h
 .\hero_board1_sjw\protocol_uppercomputer.o: ../Devices/Devices.h/J4340_Motor.h
 .\hero_board1_sjw\protocol_uppercomputer.o: ../Alg/Alg.h/FeedForward.h
-.\hero_board1_sjw\protocol_uppercomputer.o: ../Devices/Devices.h/Saber_C3.h
-.\hero_board1_sjw\protocol_uppercomputer.o: ../Apps/Apps.h/struct_typedef.h
 .\hero_board1_sjw\protocol_uppercomputer.o: ../USB_DEVICE/App/usbd_cdc_if.h
 .\hero_board1_sjw\protocol_uppercomputer.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h
 .\hero_board1_sjw\protocol_uppercomputer.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h

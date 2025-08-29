@@ -97,5 +97,3 @@
 .\hero_board1_sjw\frictionwheel.o: ../Devices/Devices.h/SBUS.h
 .\hero_board1_sjw\frictionwheel.o: ../Devices/Devices.h/J4340_Motor.h
 .\hero_board1_sjw\frictionwheel.o: ../Alg/Alg.h/FeedForward.h
-.\hero_board1_sjw\frictionwheel.o: ../Devices/Devices.h/Saber_C3.h
-.\hero_board1_sjw\frictionwheel.o: ../Apps/Apps.h/struct_typedef.h

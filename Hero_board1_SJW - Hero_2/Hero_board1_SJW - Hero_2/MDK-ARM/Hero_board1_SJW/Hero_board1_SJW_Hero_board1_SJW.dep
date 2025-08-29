@@ -99,7 +99,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x681C7AF0)
-F (../Core/Src/freertos.c)(0x68A96168)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\freertos.o --omf_browse .\hero_board1_sjw\freertos.crf --depend .\hero_board1_sjw\freertos.d)
+F (../Core/Src/freertos.c)(0x68AD2408)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\freertos.o --omf_browse .\hero_board1_sjw\freertos.crf --depend .\hero_board1_sjw\freertos.d)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x681C7AD3)
 I (D:\mdk\ARM\ARMCC\include\stddef.h)(0x5E8E3CC2)
 I (D:\mdk\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -165,10 +165,10 @@ I (../Tasks/Tasks.h/Extern_Handles.h)(0x689565EE)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Core/Inc/usart.h)(0x68973652)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../Devices/Devices.h/M3508_Motor.h)(0x68A96430)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Apps/Apps.h/shoot.h)(0x68A963F8)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
@@ -176,8 +176,6 @@ I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
 I (../Devices/Devices.h/J4340_Motor.h)(0x68A415B1)
 I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 I (../Protocol/Protocol.h/Protocol_UpperComputer.h)(0x689C42AA)
 I (../Protocol/Protocol.h/CRC.h)(0x68A42A9C)
 I (../USB_DEVICE/App/usbd_cdc_if.h)(0x689454CD)
@@ -188,8 +186,6 @@ I (../USB_DEVICE/Target/usbd_conf.h)(0x689454CD)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x681C7AFB)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x681C7AFB)
 I (../Alg/Alg.h/SpeedRamp.h)(0x689D8B83)
-I (../Tasks/Tasks.h/Task_LED.h)(0x6747163A)
-I (../Tasks/Tasks.h/struct_typedef.h)(0x67399722)
 I (../Tasks/Tasks.h/Task_vofa.h)(0x68A5AE54)
 I (../Devices/Devices.h/vofa.h)(0x689D568A)
 I (../Devices/Devices.h/sys.h)(0x5714A214)
@@ -1504,7 +1500,7 @@ I (D:\mdk\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
 I (D:\mdk\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
 I (D:\mdk\ARM\ARMCC\include\string.h)(0x5E8E3CC2)
 I (D:\mdk\ARM\ARMCC\include\math.h)(0x67FBA23D)
-F (..\Alg\Alg.c\pid.c)(0x68A86C57)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\pid.o --omf_browse .\hero_board1_sjw\pid.crf --depend .\hero_board1_sjw\pid.d)
+F (..\Alg\Alg.c\pid.c)(0x68AD235E)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\pid.o --omf_browse .\hero_board1_sjw\pid.crf --depend .\hero_board1_sjw\pid.d)
 I (../Alg/Alg.h/PID.h)(0x68A71E20)
 I (D:\mdk\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
 I (D:\mdk\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
@@ -1674,10 +1670,10 @@ I (D:\mdk\ARM\ARMCC\include\math.h)(0x67FBA23D)
 I (../Alg/Alg.h/FuzzyPID.h)(0x68A96D33)
 I (../Core/Inc/can.h)(0x689454CC)
 I (../BSP/BSP.h/typedef.h)(0x689559A3)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Apps/Apps.h/shoot.h)(0x68A963F8)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x681C7AD3)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x681C7AD3)
@@ -1712,8 +1708,6 @@ I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 F (..\Protocol\Protocol.c\CRC.c)(0x689D8ACB)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\crc.o --omf_browse .\hero_board1_sjw\crc.crf --depend .\hero_board1_sjw\crc.d)
 I (../Protocol/Protocol.h/CRC.h)(0x68A42A9C)
 I (../Core/Inc/main.h)(0x6896AC95)
@@ -1801,7 +1795,7 @@ I (D:\mdk\ARM\ARMCC\include\stdbool.h)(0x5E8E3CC2)
 I (../Alg/Alg.h/arm_math.h)(0x674730CC)
 I (D:\mdk\ARM\ARMCC\include\math.h)(0x67FBA23D)
 I (../Alg/Alg.h/FuzzyPID.h)(0x68A96D33)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Core/Inc/can.h)(0x689454CC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x681C7AD3)
@@ -1825,7 +1819,7 @@ I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
 I (../Apps/Apps.h/Shoot.h)(0x68A963F8)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
 I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
 I (../Alg/Alg.h/SpeedRamp.h)(0x689D8B83)
 I (../Devices/Devices.h/J4340_Motor.h)(0x68A415B1)
@@ -1833,8 +1827,6 @@ I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 I (../USB_DEVICE/App/usbd_cdc_if.h)(0x689454CD)
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h)(0x681C7AFB)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x681C7AFB)
@@ -1939,7 +1931,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x681C7AF0)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Core/Inc/can.h)(0x689454CC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x681C7AD3)
@@ -1967,7 +1959,7 @@ I (../Alg/Alg.h/arm_math.h)(0x674730CC)
 I (D:\mdk\ARM\ARMCC\include\math.h)(0x67FBA23D)
 I (../Alg/Alg.h/FuzzyPID.h)(0x68A96D33)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Apps/Apps.h/shoot.h)(0x68A963F8)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
@@ -1975,8 +1967,6 @@ I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
 I (../Devices/Devices.h/J4340_Motor.h)(0x68A415B1)
 I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 I (../Protocol/Protocol.h/Protocol_UpperComputer.h)(0x689C42AA)
 I (../Protocol/Protocol.h/CRC.h)(0x68A42A9C)
 I (../USB_DEVICE/App/usbd_cdc_if.h)(0x689454CD)
@@ -2026,7 +2016,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x681C7AF0)
 F (..\BSP\BSP.c\BSP_BoardCommunication.c)(0x68A7D09F)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\bsp_boardcommunication.o --omf_browse .\hero_board1_sjw\bsp_boardcommunication.crf --depend .\hero_board1_sjw\bsp_boardcommunication.d)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../Core/Inc/main.h)(0x6896AC95)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x681C7AF0)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x689454CE)
@@ -2176,7 +2166,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x681C7AF0)
 I (../Core/Inc/usart.h)(0x68973652)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Core/Inc/can.h)(0x689454CC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x681C7AD3)
@@ -2243,7 +2233,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x681C7AF0)
 I (../Core/Inc/usart.h)(0x68973652)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Core/Inc/can.h)(0x689454CC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x681C7AD3)
@@ -2272,7 +2262,7 @@ I (D:\mdk\ARM\ARMCC\include\stdbool.h)(0x5E8E3CC2)
 I (../Alg/Alg.h/arm_math.h)(0x674730CC)
 I (D:\mdk\ARM\ARMCC\include\math.h)(0x67FBA23D)
 I (../Alg/Alg.h/FuzzyPID.h)(0x68A96D33)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Apps/Apps.h/shoot.h)(0x68A963F8)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
@@ -2282,8 +2272,6 @@ I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 I (../Protocol/Protocol.h/Protocol_UpperComputer.h)(0x689C42AA)
 I (../Protocol/Protocol.h/CRC.h)(0x68A42A9C)
 I (../USB_DEVICE/App/usbd_cdc_if.h)(0x689454CD)
@@ -2401,10 +2389,10 @@ I (D:\mdk\ARM\ARMCC\include\stdbool.h)(0x5E8E3CC2)
 I (../Alg/Alg.h/arm_math.h)(0x674730CC)
 I (D:\mdk\ARM\ARMCC\include\math.h)(0x67FBA23D)
 I (../Alg/Alg.h/FuzzyPID.h)(0x68A96D33)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Apps/Apps.h/shoot.h)(0x68A963F8)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
 I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
@@ -2419,12 +2407,10 @@ I (../USB_DEVICE/Target/usbd_conf.h)(0x689454CD)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x681C7AFB)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x681C7AFB)
 I (../Alg/Alg.h/SpeedRamp.h)(0x689D8B83)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-F (..\Apps\Apps.c\Cloud_Control.c)(0x68A86C34)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\cloud_control.o --omf_browse .\hero_board1_sjw\cloud_control.crf --depend .\hero_board1_sjw\cloud_control.d)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+F (..\Apps\Apps.c\Cloud_Control.c)(0x68AD2445)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\cloud_control.o --omf_browse .\hero_board1_sjw\cloud_control.crf --depend .\hero_board1_sjw\cloud_control.d)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Alg/Alg.h/PID.h)(0x68A71E20)
 I (D:\mdk\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
 I (D:\mdk\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
@@ -2474,7 +2460,7 @@ I (../Core/Inc/can.h)(0x689454CC)
 I (../Core/Inc/main.h)(0x6896AC95)
 I (../BSP/BSP.h/typedef.h)(0x689559A3)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x681C7AD3)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x681C7AD3)
@@ -2510,8 +2496,6 @@ I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 F (..\Apps\Apps.c\Dial.c)(0x68A86CD4)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\dial.o --omf_browse .\hero_board1_sjw\dial.crf --depend .\hero_board1_sjw\dial.d)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
 I (../Apps/Apps.h/Shoot.h)(0x68A963F8)
@@ -2563,7 +2547,7 @@ I (../Core/Inc/can.h)(0x689454CC)
 I (../Core/Inc/main.h)(0x6896AC95)
 I (../BSP/BSP.h/typedef.h)(0x689559A3)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x681C7AD3)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x681C7AD3)
@@ -2580,7 +2564,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x681C7AD3)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x681C7AD3)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x681C7AD3)
 I (../Tasks/Tasks.h/Extern_Handles.h)(0x689565EE)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
 I (../Core/Inc/usart.h)(0x68973652)
 I (../Protocol/Protocol.h/Protocol_UpperComputer.h)(0x689C42AA)
@@ -2599,8 +2583,6 @@ I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
 I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 F (..\Apps\Apps.c\FrictionWheel.c)(0x68A960E8)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\frictionwheel.o --omf_browse .\hero_board1_sjw\frictionwheel.crf --depend .\hero_board1_sjw\frictionwheel.d)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
 I (../Apps/Apps.h/Shoot.h)(0x68A963F8)
@@ -2667,10 +2649,10 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x681C7AD3)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x681C7AD3)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x681C7AD3)
 I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
 I (../Core/Inc/usart.h)(0x68973652)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Tasks/Tasks.h/Extern_Handles.h)(0x689565EE)
 I (../Protocol/Protocol.h/Protocol_UpperComputer.h)(0x689C42AA)
@@ -2688,8 +2670,6 @@ I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 F (..\Apps\Apps.c\Shoot.c)(0x68A963EC)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\shoot.o --omf_browse .\hero_board1_sjw\shoot.crf --depend .\hero_board1_sjw\shoot.d)
 I (../Apps/Apps.h/Shoot.h)(0x68A963F8)
 I (../Devices/Devices.h/M3508_Motor.h)(0x68A96430)
@@ -2740,7 +2720,7 @@ I (../Core/Inc/can.h)(0x689454CC)
 I (../Core/Inc/main.h)(0x6896AC95)
 I (../BSP/BSP.h/typedef.h)(0x689559A3)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x681C7AD3)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x681C7AD3)
@@ -2759,7 +2739,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x681C7AD3
 I (../Tasks/Tasks.h/Extern_Handles.h)(0x689565EE)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
 I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
 I (../Core/Inc/usart.h)(0x68973652)
 I (../Protocol/Protocol.h/Protocol_UpperComputer.h)(0x689C42AA)
@@ -2777,8 +2757,6 @@ I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 F (..\Apps\Apps.c\Time_Stamp.c)(0x689D88B7)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\time_stamp.o --omf_browse .\hero_board1_sjw\time_stamp.crf --depend .\hero_board1_sjw\time_stamp.d)
 I (../Apps/Apps.h/Time_Stamp.h)(0x689D88BD)
 I (../Core/Inc/rtc.h)(0x689454CC)
@@ -2880,7 +2858,7 @@ I (D:\mdk\ARM\ARMCC\include\stdbool.h)(0x5E8E3CC2)
 I (../Alg/Alg.h/arm_math.h)(0x674730CC)
 I (D:\mdk\ARM\ARMCC\include\math.h)(0x67FBA23D)
 I (../Alg/Alg.h/FuzzyPID.h)(0x68A96D33)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Core/Inc/can.h)(0x689454CC)
 I (../BSP/BSP.h/typedef.h)(0x689559A3)
@@ -2890,7 +2868,7 @@ I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
 I (../Apps/Apps.h/Shoot.h)(0x68A963F8)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
 I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
 I (../Alg/Alg.h/SpeedRamp.h)(0x689D8B83)
 I (../Devices/Devices.h/J4340_Motor.h)(0x68A415B1)
@@ -2898,8 +2876,6 @@ I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 I (../USB_DEVICE/App/usbd_cdc_if.h)(0x689454CD)
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h)(0x681C7AFB)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x681C7AFB)
@@ -2945,7 +2921,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x681C7AF0)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x681C7AF0)
 I (../Core/Inc/usart.h)(0x68973652)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Core/Inc/can.h)(0x689454CC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x681C7AD3)
@@ -2975,7 +2951,7 @@ I (../Alg/Alg.h/arm_math.h)(0x674730CC)
 I (D:\mdk\ARM\ARMCC\include\math.h)(0x67FBA23D)
 I (../Alg/Alg.h/FuzzyPID.h)(0x68A96D33)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Apps/Apps.h/shoot.h)(0x68A963F8)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
@@ -2984,8 +2960,6 @@ I (../Devices/Devices.h/J4340_Motor.h)(0x68A415B1)
 I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 I (../Protocol/Protocol.h/Protocol_UpperComputer.h)(0x689C42AA)
 I (../Protocol/Protocol.h/CRC.h)(0x68A42A9C)
 I (../USB_DEVICE/App/usbd_cdc_if.h)(0x689454CD)
@@ -3047,7 +3021,7 @@ I (../Core/Inc/can.h)(0x689454CC)
 I (../Core/Inc/main.h)(0x6896AC95)
 I (../BSP/BSP.h/typedef.h)(0x689559A3)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../BSP/BSP.h/BSP_Can.h)(0x689C41BD)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x681C7AD3)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x681C7AD3)
@@ -3066,7 +3040,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x681C7AD3
 I (../Tasks/Tasks.h/Extern_Handles.h)(0x689565EE)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
 I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
 I (../Core/Inc/usart.h)(0x68973652)
 I (../Protocol/Protocol.h/Protocol_UpperComputer.h)(0x689C42AA)
@@ -3084,8 +3058,6 @@ I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 F (..\Tasks\Tasks.c\Task_CanReceive.c)(0x68A9649D)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\task_canreceive.o --omf_browse .\hero_board1_sjw\task_canreceive.crf --depend .\hero_board1_sjw\task_canreceive.d)
 I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x681C7AD3)
@@ -3152,10 +3124,10 @@ I (D:\mdk\ARM\ARMCC\include\stdbool.h)(0x5E8E3CC2)
 I (../Alg/Alg.h/arm_math.h)(0x674730CC)
 I (D:\mdk\ARM\ARMCC\include\math.h)(0x67FBA23D)
 I (../Alg/Alg.h/FuzzyPID.h)(0x68A96D33)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Apps/Apps.h/shoot.h)(0x68A963F8)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
 I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
@@ -3171,8 +3143,6 @@ I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x681C7AFB)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x681C7AFB)
 I (../Alg/Alg.h/SpeedRamp.h)(0x689D8B83)
 I (../Devices/Devices.h/J4340_Motor.h)(0x68A415B1)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
 F (..\Tasks\Tasks.c\Task_CanSend.c)(0x689D4C17)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\task_cansend.o --omf_browse .\hero_board1_sjw\task_cansend.crf --depend .\hero_board1_sjw\task_cansend.d)
@@ -3235,7 +3205,7 @@ I (D:\mdk\ARM\ARMCC\include\string.h)(0x5E8E3CC2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Core/Inc/usart.h)(0x68973652)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../Devices/Devices.h/M3508_Motor.h)(0x68A96430)
 I (../Alg/Alg.h/PID.h)(0x68A71E20)
 I (D:\mdk\ARM\ARMCC\include\stdlib.h)(0x5E8E3CC2)
@@ -3245,7 +3215,7 @@ I (../Alg/Alg.h/arm_math.h)(0x674730CC)
 I (D:\mdk\ARM\ARMCC\include\math.h)(0x67FBA23D)
 I (../Alg/Alg.h/FuzzyPID.h)(0x68A96D33)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Apps/Apps.h/shoot.h)(0x68A963F8)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
@@ -3253,8 +3223,6 @@ I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
 I (../Devices/Devices.h/J4340_Motor.h)(0x68A415B1)
 I (../Tasks/Tasks.h/Task_CanReceive.h)(0x68A41500)
 I (../Apps/Apps.h/PowerControl.h)(0x6718B3C2)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 I (../Protocol/Protocol.h/Protocol_UpperComputer.h)(0x689C42AA)
 I (../Protocol/Protocol.h/CRC.h)(0x68A42A9C)
 I (../USB_DEVICE/App/usbd_cdc_if.h)(0x689454CD)
@@ -3400,10 +3368,10 @@ I (D:\mdk\ARM\ARMCC\include\stdbool.h)(0x5E8E3CC2)
 I (../Alg/Alg.h/arm_math.h)(0x674730CC)
 I (D:\mdk\ARM\ARMCC\include\math.h)(0x67FBA23D)
 I (../Alg/Alg.h/FuzzyPID.h)(0x68A96D33)
-I (../Apps/Apps.h/Cloud_Control.h)(0x68A41500)
+I (../Apps/Apps.h/Cloud_Control.h)(0x68AD2445)
 I (../Apps/Apps.h/shoot.h)(0x68A963F8)
 I (../Apps/Apps.h/FrictionWheel.h)(0x68A86CB5)
-I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68A7C50E)
+I (../BSP/BSP.h/BSP_BoardCommunication.h)(0x68AD2503)
 I (../Apps/Apps.h/Dial.h)(0x68A86C23)
 I (../Alg/Alg.h/FeedForward.h)(0x68A41500)
 I (../Devices/Devices.h/DT7.h)(0x689D56B9)
@@ -3418,8 +3386,6 @@ I (../USB_DEVICE/Target/usbd_conf.h)(0x689454CD)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x681C7AFB)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x681C7AFB)
 I (../Alg/Alg.h/SpeedRamp.h)(0x689D8B83)
-I (../Devices/Devices.h/Saber_C3.h)(0x68A41500)
-I (../Apps/Apps.h/struct_typedef.h)(0x6718B3C2)
 I (../BSP/BSP.h/BSP_Usart.h)(0x68A41500)
 I (../Devices/Devices.h/SBUS.h)(0x689C4095)
 F (../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c)(0x681C7AFB)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Alg/Alg.h -I ../Apps/Apps.h -I ../BSP/BSP.h -I ../Devices/Devices.h -I ../Protocol/Protocol.h -I ../Tasks/Tasks.h-I.\RTE\_Hero_board1_SJW-ID:\mdk\ARM\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM -DARM_MATH_CM4 -D__FPU_PRESENT="1U"-o .\hero_board1_sjw\usbd_core.o --omf_browse .\hero_board1_sjw\usbd_core.crf --depend .\hero_board1_sjw\usbd_core.d)

@@ -11,9 +11,8 @@
 #include "J4340_Motor.h"
 
 // 直接声明对应的电机的结构体而不用数组，直观便于后期调试观察数据使用。
-J4340s_t J4340s_Pitch;                      // 8
+J4340s_t J4340s_Pitch;
 J4340s_t *J4340_Array[1] = {&J4340s_Pitch}; // 对应电机的ID必须为：索引+1
-#define J4340_Amount 1
 
 /****************函数声明****************/
 void J4340_setParameter(float uq1, float uq2, float uq3, float uq4, float uq5, uint8_t *data);
@@ -214,7 +213,7 @@ void Check_J4340(void)
     for (int i = 0; i < 1; i++)
     {
         if (J4340_Array[i]->InfoUpdateFrame < 1)
-        {
+				{
             J4340_Array[i]->OffLineFlag = 1;
         }
         else

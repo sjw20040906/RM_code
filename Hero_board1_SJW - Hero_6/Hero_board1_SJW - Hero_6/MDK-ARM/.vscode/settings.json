@@ -38,7 +38,9 @@
         "task_j4310_onlinecheck.h": "c",
         "task_vofa.h": "c",
         "vofa.h": "c",
-        "stm32f4xx_hal.h": "c"
+        "stm32f4xx_hal.h": "c",
+        "usart.h": "c",
+        "sys.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

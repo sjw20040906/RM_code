@@ -34,7 +34,6 @@
 #include "Task_LED.h"
 #include "SBUS.h"
 #include "DT7.h"
-#include "Saber_C3.h"
 #include "Protocol_UpperComputer.h"
 #include "Task_vofa.h"
 #include "Task_J4310_onlineCheck.h"
@@ -64,9 +63,9 @@ QueueHandle_t CAN_SendHandle;                  // can发送队列
 QueueHandle_t Communicate_ReceivefromPCHandle; // 从PC接收到的数据队列
 
 /***********Tasks************/
-osThreadId Task_Can1MsgRecHandle; // can1消息接收任务句柄
-osThreadId Task_Can2MsgRecHandle; // can2消息接收任务句柄
-osThreadId Task_CanSendHandle;    // can发送任务句柄
+osThreadId Task_Can1MsgRecHandle;         // can1消息接收任务句柄
+osThreadId Task_Can2MsgRecHandle;         // can2消息接收任务句柄
+osThreadId Task_CanSendHandle;            // can发送任务句柄
 osThreadId Robot_Control_Handle;          // 机器人控制任务句柄
 osThreadId Task_CommunicateFromPC_Handle; // 从PC通信任务句柄
 osThreadId Task_CommunicateToPC_Handle;   // 向PC通信任务句柄
@@ -159,7 +158,7 @@ void MX_FREERTOS_Init(void)
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of StartTask */
-  osThreadDef(StartTask, ALL_Init, osPriorityRealtime, 0, 128);
+  osThreadDef(StartTask, ALL_Init, osPriorityHigh, 0, 128);
   StartTaskHandle = osThreadCreate(osThread(StartTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -177,7 +176,7 @@ void MX_FREERTOS_Init(void)
   Task_CanSendHandle = osThreadCreate(osThread(Can_SendTask), NULL);
 
   /* definition and creation of Robot_Control_Task */
-  osThreadDef(Robot_Control_Task, Robot_Control, osPriorityHigh, 0, 256);
+  osThreadDef(Robot_Control_Task, Robot_Control, osPriorityRealtime, 0, 256);
   Robot_Control_Handle = osThreadCreate(osThread(Robot_Control_Task), NULL);
 
   /* definition and creation of Task_CommunicateToPC_Handle */
@@ -193,7 +192,7 @@ void MX_FREERTOS_Init(void)
   Task_DT7_Handle = osThreadCreate(osThread(Task_DT7_Handle), NULL);
 
   /* definition and creation of Task_VOFA_Handle */
-  osThreadDef(Task_VOFA_Handle, VOFA_Handle, osPriorityAboveNormal, 0, 128);
+  osThreadDef(Task_VOFA_Handle, VOFA_Handle, osPriorityNormal, 0, 128);
   Task_VOFA_Handle = osThreadCreate(osThread(Task_VOFA_Handle), NULL);
 
   /* definition and creation of Task_J4310_onlineCheck_Handle */
@@ -236,11 +235,11 @@ void ALL_Init(void const *argument)
   for (;;)
   {
     taskENTER_CRITICAL();
-		
+
     /*********初始化两个CAN控制协议，使用中断模式*********/
     Can_Fun.CAN_IT_Init(&hcan1, Can1_Type);
     Can_Fun.CAN_IT_Init(&hcan2, Can2_Type);
-		
+
     /*********初始化PID*********/
     fuzzy_init(&fuzzy_pid_shoot_F1, 100, -100, 25, 0.1, 10);
     fuzzy_init(&fuzzy_pid_shoot_F2, 100, -100, 25, 0.1, 10);
@@ -261,9 +260,13 @@ void ALL_Init(void const *argument)
 
     Position_PIDInit(&M3508_DialV_Pid, 0.4f, 0.015f, 0.3, 0.5, 2000, 1000, 500);
     Incremental_PIDInit(&M3508_DialI_Pid, 15.0f, 2.5f, 8, 25000, 10000);
-		
-		/********云台初始化*********/
+
+    /********云台初始化*********/
     Cloud_Init();
+
+    /********VOFA接收初始化*********/
+    VOFA_Init();
+
 #if (RemoteControlMethod == TDF)
     SBUS_Init(); // 天地飞遥控器
 #elif (RemoteControlMethod == DT7)

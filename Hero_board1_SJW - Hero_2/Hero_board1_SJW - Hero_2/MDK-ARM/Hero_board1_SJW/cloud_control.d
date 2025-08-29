@@ -94,5 +94,3 @@
 .\hero_board1_sjw\cloud_control.o: ../BSP/BSP.h/BSP_Usart.h
 .\hero_board1_sjw\cloud_control.o: ../Devices/Devices.h/SBUS.h
 .\hero_board1_sjw\cloud_control.o: ../Devices/Devices.h/J4340_Motor.h
-.\hero_board1_sjw\cloud_control.o: ../Devices/Devices.h/Saber_C3.h
-.\hero_board1_sjw\cloud_control.o: ../Apps/Apps.h/struct_typedef.h

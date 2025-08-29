@@ -70,8 +70,6 @@ void CAN_IT_Init(CAN_HandleTypeDef *hcanx, uint8_t Can_type)
   /*启用CAN*/
   HAL_CAN_Start(hcanx);
   /*使能CAN的IT中断*/
-  // HAL_CAN_Receive_IT(&hcan1, CAN_FIFO0);   //启动CAN接收中断
-  //__HAL_CAN_ENABLE_IT(hcanx, CAN_IT_RX_FIFO0_MSG_PENDING); //  CAN_IT_FMP0
   HAL_CAN_ActivateNotification(hcanx, CAN_IT_RX_FIFO0_MSG_PENDING);
 }
 

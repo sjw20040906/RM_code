@@ -92,7 +92,5 @@
 .\hero_board1_sjw\task_canreceive.o: ../Alg/Alg.h/SpeedRamp.h
 .\hero_board1_sjw\task_canreceive.o: ../Devices/Devices.h/J4340_Motor.h
 .\hero_board1_sjw\task_canreceive.o: ../Tasks/Tasks.h/Task_CanReceive.h
-.\hero_board1_sjw\task_canreceive.o: ../Devices/Devices.h/Saber_C3.h
-.\hero_board1_sjw\task_canreceive.o: ../Apps/Apps.h/struct_typedef.h
 .\hero_board1_sjw\task_canreceive.o: ../BSP/BSP.h/BSP_Usart.h
 .\hero_board1_sjw\task_canreceive.o: ../Devices/Devices.h/SBUS.h

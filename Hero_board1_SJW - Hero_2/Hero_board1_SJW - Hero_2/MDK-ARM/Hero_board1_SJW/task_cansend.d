@@ -87,8 +87,6 @@
 .\hero_board1_sjw\task_cansend.o: ../Apps/Apps.h/PowerControl.h
 .\hero_board1_sjw\task_cansend.o: ../BSP/BSP.h/BSP_Usart.h
 .\hero_board1_sjw\task_cansend.o: ../Devices/Devices.h/J4340_Motor.h
-.\hero_board1_sjw\task_cansend.o: ../Devices/Devices.h/Saber_C3.h
-.\hero_board1_sjw\task_cansend.o: ../Apps/Apps.h/struct_typedef.h
 .\hero_board1_sjw\task_cansend.o: ../Protocol/Protocol.h/Protocol_UpperComputer.h
 .\hero_board1_sjw\task_cansend.o: ../Protocol/Protocol.h/CRC.h
 .\hero_board1_sjw\task_cansend.o: ../USB_DEVICE/App/usbd_cdc_if.h

@@ -15,14 +15,13 @@ M3508s_t M3508_Array[TotalNum] = {
     [Fric_Front_1] = {0},
     [Fric_Front_2] = {0},
     [Fric_Front_3] = {0},
-		[Dial_Wheel] = {0},
+    [Dial_Wheel] = {0},
     [Fric_Back_1] = {0},
     [Fric_Back_2] = {0},
     [Fric_Back_3] = {0},
 };
 
 void M3508_getInfo(Can_Export_Data_t RxMessage);
-void M3508_Friction_getInfo(Can_Export_Data_t RxMessage);
 void M3508_setCurrent(int16_t iq1, int16_t iq2, int16_t iq3, int16_t iq4, uint8_t *data);
 
 M3508_FUN_t M3508_FUN = M3508_FunGroundInit;

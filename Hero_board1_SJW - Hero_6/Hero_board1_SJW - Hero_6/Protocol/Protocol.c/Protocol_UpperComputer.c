@@ -16,7 +16,6 @@
 
 float Auto_Aim_Yaw;
 float Auto_Aim_Pitch;
-positionpid_t Auto_Aim_PID;
 
 // 测试debug显示用的变量
 float a, b;
@@ -102,7 +101,6 @@ void UpperCom_Receive_From_Up(uint8_t Rec[])
 		if (!Verify_CRC8_Check_Sum(Rec, 5 + Rec[3]))
 			return;
 		Auto_Aim_Pitch = Cloud_Pitch_level + R2float(&Rec[4]) * 1303.8f; //  8192 / 2 / π;
-		// Auto_Aim_Yaw = Position_PID(&Auto_Aim_PID, 0, R4(&Rec[8]));
 		Auto_Aim_Yaw = R2int16(&Rec[8]);
 		a = R2float(&Rec[4]);
 		b = R2int16(&Rec[8]);

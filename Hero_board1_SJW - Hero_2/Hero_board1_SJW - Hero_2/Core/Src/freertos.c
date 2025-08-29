@@ -31,10 +31,8 @@
 #include "BSP_Usart.h"
 #include "Cloud_Control.h"
 #include "Shoot.h"
-#include "Task_LED.h"
 #include "SBUS.h"
 #include "DT7.h"
-#include "Saber_C3.h"
 #include "Protocol_UpperComputer.h"
 #include "Task_vofa.h"
 #include "Task_J4310_onlineCheck.h"
@@ -193,7 +191,7 @@ void MX_FREERTOS_Init(void)
   Task_DT7_Handle = osThreadCreate(osThread(Task_DT7_Handle), NULL);
 
   /* definition and creation of Task_VOFA_Handle */
-  osThreadDef(Task_VOFA_Handle, VOFA_Handle, osPriorityAboveNormal, 0, 128);
+  osThreadDef(Task_VOFA_Handle, VOFA_Handle, osPriorityNormal, 0, 128);
   Task_VOFA_Handle = osThreadCreate(osThread(Task_VOFA_Handle), NULL);
 
   /* definition and creation of Task_J4310_onlineCheck_Handle */

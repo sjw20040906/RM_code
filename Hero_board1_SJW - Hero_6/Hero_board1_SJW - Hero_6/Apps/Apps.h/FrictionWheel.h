@@ -39,7 +39,7 @@ typedef enum
 } Fric_On_Off;
 
 /* 根据射速得到的摩擦轮转速 */
-#define Fric_SpeedLevel1 5800 // 15.5m/s
+#define Fric_SpeedLevel1 6000 // 15.5m/s
 #define Fric_SpeedLevel2 5000 //
 
 /* Dial函数数据以及函数的接口结构体 */

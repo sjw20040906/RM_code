@@ -186,6 +186,7 @@ void DT7_Handle(void)
 				Fric_Data.Fric_Switch = Fric_Off;
 				ControlMes.fric_Flag = 0;
 				ControlMes.Check_In_Flag = 0;
+
 				if (ControlMes.shoot_state != RC_SW_UP)
 					ControlMes.z_rotation_velocity = 0.3 * RC_CtrlData.wheel; // 滑轮左右
 			}
@@ -258,6 +259,7 @@ void DT7_Handle(void)
 				Fric_Data.Fric_Switch = Fric_Off;
 				ControlMes.fric_Flag = 0;
 				ControlMes.Check_In_Flag = 0;
+
 				if (ControlMes.shoot_state != RC_SW_UP)
 					ControlMes.z_rotation_velocity = RC_CtrlData.wheel; // 滑轮左右
 			}

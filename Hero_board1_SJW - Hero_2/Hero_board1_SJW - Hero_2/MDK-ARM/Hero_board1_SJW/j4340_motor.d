@@ -92,7 +92,5 @@
 .\hero_board1_sjw\j4340_motor.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 .\hero_board1_sjw\j4340_motor.o: ../Alg/Alg.h/SpeedRamp.h
 .\hero_board1_sjw\j4340_motor.o: ../Devices/Devices.h/J4340_Motor.h
-.\hero_board1_sjw\j4340_motor.o: ../Devices/Devices.h/Saber_C3.h
-.\hero_board1_sjw\j4340_motor.o: ../Apps/Apps.h/struct_typedef.h
 .\hero_board1_sjw\j4340_motor.o: ../BSP/BSP.h/BSP_Usart.h
 .\hero_board1_sjw\j4340_motor.o: ../Devices/Devices.h/SBUS.h

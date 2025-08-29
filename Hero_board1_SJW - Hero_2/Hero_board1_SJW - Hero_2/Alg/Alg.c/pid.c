@@ -10,8 +10,6 @@
  */
 #include "PID.h"
 
-One_Kalman_t Cloud_YAWODKalman;
-One_Kalman_t Cloud_PITCHODKalman;
 
 // 限制PID参数范围
 void limit_pid_params(float Kp, float Ki, float Kd)

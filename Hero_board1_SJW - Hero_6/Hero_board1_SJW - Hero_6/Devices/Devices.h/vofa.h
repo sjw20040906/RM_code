@@ -13,6 +13,7 @@
 #include "sys.h"
 #include "usart.h"
 #include "math.h"
+#include "BSP_Usart.h"
 
 typedef union
 {
@@ -21,5 +22,5 @@ typedef union
 } FloatLongType;
 
 void JustFloat_Send(float *fdata, uint16_t fdata_num, USART_TypeDef *Usart_choose);
-
+void VOFA_Init(void);
 #endif

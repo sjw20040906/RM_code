@@ -94,6 +94,4 @@
 .\hero_board1_sjw\dial.o: ../Devices/Devices.h/SBUS.h
 .\hero_board1_sjw\dial.o: ../Devices/Devices.h/J4340_Motor.h
 .\hero_board1_sjw\dial.o: ../Alg/Alg.h/FeedForward.h
-.\hero_board1_sjw\dial.o: ../Devices/Devices.h/Saber_C3.h
-.\hero_board1_sjw\dial.o: ../Apps/Apps.h/struct_typedef.h
 .\hero_board1_sjw\dial.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h

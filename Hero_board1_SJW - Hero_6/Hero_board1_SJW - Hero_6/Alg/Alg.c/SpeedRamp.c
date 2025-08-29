@@ -57,32 +57,32 @@ void CountReset(SpeedRamp_t *SpeedRamp)
  */
 float RAMP_float(float final, float now, float ramp)
 {
-	float buffer = 0;
+	float buffer = 0; // 用于存储最终输出与当前输出的差值
 
-	buffer = final - now;
+	buffer = final - now; // 计算期望值与当前值的差
 
-	if (buffer > 0)
+	if (buffer > 0) // 如果差值为正，表示当前值小于期望值
 	{
-		if (buffer > ramp)
+		if (buffer > ramp) // 如果差值大于变化速度
 		{
-			now += ramp;
+			now += ramp; // 当前值增加变化速度
 		}
-		else
+		else // 如果差值小于或等于变化速度
 		{
-			now += buffer;
+			now += buffer; // 当前值直接增加差值，达到期望值
 		}
 	}
-	else
+	else // 如果差值为负，表示当前值大于期望值
 	{
-		if (buffer < -ramp)
+		if (buffer < -ramp) // 如果差值小于负的变化速度
 		{
-			now += -ramp;
+			now += -ramp; // 当前值减少变化速度
 		}
-		else
+		else // 如果差值大于或等于负的变化速度
 		{
-			now += buffer;
+			now += buffer; // 当前值直接减少差值，达到期望值
 		}
 	}
 
-	return now;
+	return now; // 返回更新后的当前值
 }

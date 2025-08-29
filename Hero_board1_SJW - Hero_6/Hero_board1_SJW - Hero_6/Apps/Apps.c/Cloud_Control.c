@@ -27,18 +27,16 @@ const float Cloud_Pitch_Derta = Cloud_Pitch_Center - Cloud_Pitch_Min;
 Cloud_t Cloud;
 float Cloud_Target_Aim_Flag;
 float Cloud_Init_Angle;
-extern Saber_Angle_t Saber_Angle;
 float Pitch_Torque = 3.f; // 云台所需扭矩
 float Pitch_v = 2;
 float Pitch_Kp = 60;
 float Pitch_Kd = 2;
-float Pitch_RC_Sen = 0.001;
+float Pitch_RC_Sen = 0.0005;
 int16_t Cloud_Aim_Pitch_Flag;
 int Aim_Flag = 0;
 /*****************数据声明end****************/
 
 /******************卡尔曼滤波结构体创建*********/
-One_Kalman_t Cloud_PitchMotorAngle_Error_Kalman; // Pitch轴电机角度误差的Kalman滤波器
 One_Kalman_t Cloud_PitchCurrent_Kalman;			 // Pitch轴电流的Kalman滤波器
 /******************卡尔曼滤波结构体创建 end*********/
 
@@ -65,8 +63,6 @@ void Cloud_Init(void)
 	Cloud.Pitch_Raw = Cloud_Pitch_Min;
 	Cloud.AutoAim_Pitch = 0;
 
-	One_Kalman_Create(&Cloud_PitchMotorAngle_Error_Kalman, 1.5, 40);
-	One_Kalman_Create(&Cloud_PITCHODKalman, 1, 10);
 	One_Kalman_Create(&Cloud_PitchCurrent_Kalman, 6, 10);
 	ControlMes.change_Flag = 0;
 	ControlMes.shoot_Speed = 2;

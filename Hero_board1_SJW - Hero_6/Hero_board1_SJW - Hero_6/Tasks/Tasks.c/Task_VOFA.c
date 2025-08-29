@@ -12,7 +12,7 @@
 #include "Task_VOFA.h"
 
 
-float data;
+float data[2]={21.0,2.0};
 uint16_t _num;
 
 void VOFA_Handle(void const *argument)
@@ -22,7 +22,7 @@ void VOFA_Handle(void const *argument)
     const TickType_t TimeIncrement = pdMS_TO_TICKS(15);
     for (;;)
     {
-        JustFloat_Send(&data,_num,USART1);
+        JustFloat_Send(data,2,USART1);
         vTaskDelayUntil(&xLastWakeTime, TimeIncrement);
     }
 }

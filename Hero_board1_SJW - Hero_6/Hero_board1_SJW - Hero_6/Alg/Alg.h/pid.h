@@ -113,7 +113,5 @@ extern void Position_PIDInit(positionpid_t *pid_t, float Kp, float Kd, float Ki,
 extern float Position_PID_Pitch(positionpid_t *pid_t, FUZZYPID_Data_t *fuzzy_t, float target, float measured);
 extern float Position_PID_Dial(positionpid_t *pid_t, FUZZYPID_Data_t *fuzzy_t, float target, float measured);
 
-extern One_Kalman_t Cloud_YAWODKalman;
-extern One_Kalman_t Cloud_PITCHODKalman;
 
 #endif
